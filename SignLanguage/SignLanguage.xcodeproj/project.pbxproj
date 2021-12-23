@@ -30,9 +30,9 @@
 		BD8D9297276930C400B65AC6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8D9296276930C400B65AC6 /* Question.swift */; };
 		BD8D9299276930EC00B65AC6 /* QuestionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8D9298276930EC00B65AC6 /* QuestionManager.swift */; };
 		BD8D929B2769314B00B65AC6 /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8D929A2769314B00B65AC6 /* QuestionVC.swift */; };
-		BD8D929F276933C200B65AC6 /* clapping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD8D929D276933C200B65AC6 /* clapping.mp3 */; };
-		BD8D92A0276933C200B65AC6 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD8D929E276933C200B65AC6 /* error.mp3 */; };
 		BDCDA5022767EBE100F90652 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCDA5012767EBE100F90652 /* SettingTableViewCell.swift */; };
+		BDD60BF427744C21003D04F8 /* clapping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDD60BF227744C21003D04F8 /* clapping.mp3 */; };
+		BDD60BF527744C21003D04F8 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDD60BF327744C21003D04F8 /* error.mp3 */; };
 		BDDB53C2275EBFE9005485A0 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB53C1275EBFE9005485A0 /* SearchResultsController.swift */; };
 		BDDE2072276762FB001C440C /* SignUpTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */; };
 		BDDE207427676481001C440C /* LoginTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE207327676481001C440C /* LoginTeacherViewController.swift */; };
@@ -62,9 +62,9 @@
 		BD8D9296276930C400B65AC6 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BD8D9298276930EC00B65AC6 /* QuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
 		BD8D929A2769314B00B65AC6 /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
-		BD8D929D276933C200B65AC6 /* clapping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clapping.mp3; sourceTree = "<group>"; };
-		BD8D929E276933C200B65AC6 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		BDCDA5012767EBE100F90652 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		BDD60BF227744C21003D04F8 /* clapping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clapping.mp3; sourceTree = "<group>"; };
+		BDD60BF327744C21003D04F8 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		BDDB53C1275EBFE9005485A0 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTeacherViewController.swift; sourceTree = "<group>"; };
 		BDDE207327676481001C440C /* LoginTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTeacherViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				BD46364627728D2400D197A5 /* Profile.swift */,
-				BD8D929C276933C200B65AC6 /* Sounds */,
+				BDD60BF127744C21003D04F8 /* Sounds */,
 				BD7704AD2752D95C00E82623 /* SignLanguage */,
 				BD7704AC2752D95C00E82623 /* Products */,
 			);
@@ -205,14 +205,13 @@
 			path = Teachers_Students_Browser;
 			sourceTree = "<group>";
 		};
-		BD8D929C276933C200B65AC6 /* Sounds */ = {
+		BDD60BF127744C21003D04F8 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				BD8D929D276933C200B65AC6 /* clapping.mp3 */,
-				BD8D929E276933C200B65AC6 /* error.mp3 */,
+				BDD60BF227744C21003D04F8 /* clapping.mp3 */,
+				BDD60BF327744C21003D04F8 /* error.mp3 */,
 			);
-			name = Sounds;
-			path = "../../tuwaiq Academy/Swift_projects/SW-Unit01/SW-U01-LABS-HOMEWORK /SW-Lab-U01_W03_D15-TriviaMultipleChoice-iter2/TriviaMultipleChoice-Shuruq 2/TriviaMultipleChoice-Shuruq/Sounds";
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,11 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD091A63276F4AC6001E2C5A /* GoogleService-Info.plist in Resources */,
-				BD8D929F276933C200B65AC6 /* clapping.mp3 in Resources */,
-				BD8D92A0276933C200B65AC6 /* error.mp3 in Resources */,
 				BD7704BB2752D95C00E82623 /* LaunchScreen.storyboard in Resources */,
+				BDD60BF427744C21003D04F8 /* clapping.mp3 in Resources */,
 				BD7704B82752D95C00E82623 /* Assets.xcassets in Resources */,
 				BD7704B62752D95C00E82623 /* Main.storyboard in Resources */,
+				BDD60BF527744C21003D04F8 /* error.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
