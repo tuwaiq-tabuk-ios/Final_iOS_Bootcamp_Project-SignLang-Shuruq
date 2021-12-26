@@ -19,13 +19,16 @@ struct SettingsOption {
 }
 
 class Settings: UIViewController, UITableViewDelegate,UITableViewDataSource {
-    private let tableView: UITableView = {
+  
+  
+  private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         return table
     }()
   
     var models = [Section]()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -37,6 +40,7 @@ class Settings: UIViewController, UITableViewDelegate,UITableViewDataSource {
         
         creatButton()
     }
+  
   
     var goButton = UIButton()
     

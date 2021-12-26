@@ -11,7 +11,7 @@ struct ConstantsTeacher {
     
     struct Storyboard {
         
-        static let homeViewController = "Home Teacher"
+        static let homeViewController = "HomeTeacher"
         
     }
     

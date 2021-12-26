@@ -18,23 +18,23 @@ struct QuizManager {
   private var score = 0
   
   let quiz = [
-    Question(question: "Which is the world's tallest peak?",
+    Question(questionImage: "The", question: "Which is the world's tallest peak?",
              answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
              correctAnswer:"Everest"),
     
-    Question(question:  "Which is the Capital of Saudi Arabia?",
+    Question(questionImage: "N", question:  "Which is the Capital of Saudi Arabia?",
              answers: ["Riyadh", "Sydney", "Melbourne", "Australia does not have a capital"] ,
              correctAnswer: "Riyadh"),
     
-    Question(question: "Where are the largest markets for dates in Saudi Arabia?" ,
+    Question(questionImage: "T", question: "Where are the largest markets for dates in Saudi Arabia?" ,
              answers: ["Buraydah", "Okaz", "Onaizah", "Onaizah"],
              correctAnswer: "Buraydah"),
     
-    Question(question: "Where is the Elephant Mountain in Saudi Arabia?",
+    Question(questionImage: "Sh", question: "Where is the Elephant Mountain in Saudi Arabia?",
              answers: ["Mecca", "Dammam", "Al Ula", "Abha"],
              correctAnswer: "Al Ula" ),
     
-    Question(question: "Where is the NEOM project in Saudi Arabia?",
+    Question(questionImage: "ضاء", question: "Where is the NEOM project in Saudi Arabia?",
              answers: ["West", "North", "East", "South"] ,
              correctAnswer: "North")]
   

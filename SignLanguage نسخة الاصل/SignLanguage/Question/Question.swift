@@ -7,10 +7,10 @@
 
 import Foundation
 import UIKit
-import openssl_grpc
 
 struct Question {
   
+  let questionImage: String
   let question: String
   let answers: [String]
   let correctAnswer :String

@@ -53,7 +53,7 @@ class LoginTeacherViewController: UIViewController {
       }
       else {
         
-        let homeViewController = self.storyboard?.instantiateViewController(identifier: ConstantsTeacher.Storyboard.homeViewController) as? SignlanguageTeachers
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: ConstantsTeacher.Storyboard.homeViewController) as? ProfileTableViewController
         
         self.view.window?.rootViewController = homeViewController
         self.view.window?.makeKeyAndVisible()
