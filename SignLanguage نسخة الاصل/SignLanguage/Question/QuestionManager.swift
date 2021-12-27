@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-struct QuizManager {
+class QuizManager {
   
   var player: AVAudioPlayer?
   var playerErrors : AVAudioPlayer?
@@ -17,29 +17,36 @@ struct QuizManager {
   private var questionNumber = 0
   private var score = 0
   
-  let quiz = [
-    Question(questionImage: "The", question: "Which is the world's tallest peak?",
+  var quiz = [Question]()
+  
+  init() { quiz.append(
+    Question(image:"The", question: "what the mean picture ?",
              answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-             correctAnswer:"Everest"),
+             correctAnswer:"Everest"))
     
-    Question(questionImage: "N", question:  "Which is the Capital of Saudi Arabia?",
-             answers: ["Riyadh", "Sydney", "Melbourne", "Australia does not have a capital"] ,
-             correctAnswer: "Riyadh"),
+    quiz.append(
+      Question(image:"T", question: "what the mean picture ?",
+               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
+               correctAnswer:"Everest"))
     
-    Question(questionImage: "T", question: "Where are the largest markets for dates in Saudi Arabia?" ,
-             answers: ["Buraydah", "Okaz", "Onaizah", "Onaizah"],
-             correctAnswer: "Buraydah"),
+    quiz.append(
+      Question(image:"Sh", question: "what the mean picture ?",
+               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
+               correctAnswer:"Everest"))
     
-    Question(questionImage: "Sh", question: "Where is the Elephant Mountain in Saudi Arabia?",
-             answers: ["Mecca", "Dammam", "Al Ula", "Abha"],
-             correctAnswer: "Al Ula" ),
+    quiz.append(
+      Question(image:"D", question: "what the mean picture ?",
+               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
+               correctAnswer:"Everest"))
     
-    Question(questionImage: "ضاء", question: "Where is the NEOM project in Saudi Arabia?",
-             answers: ["West", "North", "East", "South"] ,
-             correctAnswer: "North")]
+    quiz.append(
+      Question(image:"The", question: "what the mean picture ?",
+               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
+               correctAnswer:"Everest"))
+  }
   
   
-  mutating func checkAnswer(_ userAnswer:String) -> Bool {
+  func checkAnswer(_ userAnswer:String) -> Bool {
     
     print(userAnswer)
     print(quiz[questionNumber].correctAnswer)
@@ -75,7 +82,7 @@ struct QuizManager {
   }
   
   
-  mutating func nextQuestion() -> Bool{
+ func nextQuestion() -> Bool{
     
     if (questionNumber + 1 <  quiz.count) {
       questionNumber += 1
@@ -87,7 +94,7 @@ struct QuizManager {
   }
   
   
-  mutating func hasUserGoodScore() -> Bool {
+ func hasUserGoodScore() -> Bool {
     
     let maxScore = quiz.count * 5
     
@@ -98,13 +105,13 @@ struct QuizManager {
   }
   
   
-  mutating func startGame(){
+ func startGame(){
     score = 0
     questionNumber = 0
   }
   
   
-  mutating func playSound() {
+ func playSound() {
     
     guard let url = Bundle.main.url(forResource: "clapping",
                                     withExtension: "mp3") else { return }
@@ -133,7 +140,7 @@ struct QuizManager {
   }
   
   
-  mutating func playError() {
+ func playError() {
     
     guard let url = Bundle.main.url(forResource: "error",
                                     withExtension: "mp3") else { return }
