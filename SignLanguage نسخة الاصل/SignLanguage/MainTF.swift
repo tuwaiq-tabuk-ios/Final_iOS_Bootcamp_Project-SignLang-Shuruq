@@ -8,8 +8,8 @@ final  class MainTF: UITextField {
     
     // Provides left padding for images
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        var textRect = super.leftViewRect(forBounds: bounds)
-        textRect.origin.x += leftPadding
+      let textRect = super.leftViewRect(forBounds: bounds)
+      //  textRect.origin.x += leftPadding
         return textRect
     }
 
@@ -44,8 +44,9 @@ final  class MainTF: UITextField {
         }
     }
     
-    @IBInspectable var leftPadding: CGFloat = 10
-    let textPadding: CGFloat = 23
+//    @IBInspectable var leftPadding: CGFloat = 10
+//    let textPadding: CGFloat = 23
+  
     @IBInspectable var color: UIColor = UIColor.lightGray {
         didSet {
             updateView()
@@ -86,8 +87,10 @@ final  class MainTF: UITextField {
             rightViewMode = UITextField.ViewMode.never
             rightView = nil
         }
+      
         let rightPadding:CGFloat = isPasswordTF ? 35:5
-         padding = UIEdgeInsets(top: 0, left: textPadding+leftPadding , bottom: 0, right: rightPadding )
+//         padding = UIEdgeInsets(top: 0, left: textPadding+leftPadding , bottom: 0, right: rightPadding )
+//      
     }
   
             @objc func updateTextFieldType(_ sender: UITapGestureRecognizer? = nil) {
@@ -102,8 +105,6 @@ final  class MainTF: UITextField {
                     }
                 }
             }
- 
-    
  
     
     func updateView() {
@@ -123,24 +124,19 @@ final  class MainTF: UITextField {
             
         }
         let rightPadding:CGFloat = isPasswordTF ? 35:5
-         padding = UIEdgeInsets(top: 0, left: textPadding+leftPadding , bottom: 0, right: rightPadding )
-        self.borderStyle = .none
+//         padding = UIEdgeInsets(top: 0, left: textPadding+leftPadding , bottom: 0, right: rightPadding )
+//        self.borderStyle = .none
 
         // Placeholder text color
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: color])
         
         
-     //   layer.borderWidth = 1
-        layer.borderColor = borderColor != nil ? borderColor?.cgColor :  color.cgColor 
+        layer.borderColor = borderColor != nil ? borderColor?.cgColor :  color.cgColor
         
-        //    layer.cornerRadius = bounds.height/4
             
         
     }
-//    override func layoutSubviews() {
-//        self.updateView()
-//
-//    }
+
 }
 
 

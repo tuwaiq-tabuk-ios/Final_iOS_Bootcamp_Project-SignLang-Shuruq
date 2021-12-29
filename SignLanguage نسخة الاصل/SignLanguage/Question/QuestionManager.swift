@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class QuizManager {
+struct QuizManager {
   
   var player: AVAudioPlayer?
   var playerErrors : AVAudioPlayer?
@@ -17,36 +17,29 @@ class QuizManager {
   private var questionNumber = 0
   private var score = 0
   
-  var quiz = [Question]()
-  
-  init() { quiz.append(
-    Question(image:"The", question: "what the mean picture ?",
-             answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-             correctAnswer:"Everest"))
+  let quiz = [
+    Question(image: UIImage(named: "دال")!, question: "ماذا تعني هذه الصورة ؟",
+             answers: ["ا", "و", "ل", "د"],
+             correctAnswer:"د"),
     
-    quiz.append(
-      Question(image:"T", question: "what the mean picture ?",
-               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-               correctAnswer:"Everest"))
+    Question(image: UIImage(named: "تاء")!, question:  "ماذا تعني هذه الصورة ؟",
+             answers: ["تاء", "سين", "هاء", "ميم"] ,
+             correctAnswer: "تاء"),
     
-    quiz.append(
-      Question(image:"Sh", question: "what the mean picture ?",
-               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-               correctAnswer:"Everest"))
+    Question(image: UIImage(named: "ال")!, question: "ماذا تعني هذه الصورة ؟" ,
+             answers: ["لام", "حاء", "شين", "ال"],
+             correctAnswer: "ال"),
     
-    quiz.append(
-      Question(image:"D", question: "what the mean picture ?",
-               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-               correctAnswer:"Everest"))
+    Question(image: UIImage(named: "نون")!, question: "ماذا تعني هذه الصورة ؟",
+             answers: ["واو", "باء", "ذال", "نون"],
+             correctAnswer: "نون" ),
     
-    quiz.append(
-      Question(image:"The", question: "what the mean picture ?",
-               answers: ["Klimanjaro", "Everest", "Jabal Sawda", "Montblanc"],
-               correctAnswer:"Everest"))
-  }
+    Question(image: UIImage(named: "شين")!, question: "ماذا تعني هذه الصورة ؟",
+             answers: ["ضاء", "عين", "شين", "ثاء"] ,
+             correctAnswer: "شين")]
   
   
-  func checkAnswer(_ userAnswer:String) -> Bool {
+  mutating func checkAnswer(_ userAnswer:String) -> Bool {
     
     print(userAnswer)
     print(quiz[questionNumber].correctAnswer)
@@ -65,6 +58,10 @@ class QuizManager {
     return score
   }
   
+  func getImage() -> UIImage {
+    return quiz[questionNumber].questionImage
+    
+  }
   
   func getQuestion() -> String {
     quiz[questionNumber].question
@@ -82,7 +79,7 @@ class QuizManager {
   }
   
   
- func nextQuestion() -> Bool{
+  mutating func nextQuestion() -> Bool{
     
     if (questionNumber + 1 <  quiz.count) {
       questionNumber += 1
@@ -94,7 +91,7 @@ class QuizManager {
   }
   
   
- func hasUserGoodScore() -> Bool {
+  mutating func hasUserGoodScore() -> Bool {
     
     let maxScore = quiz.count * 5
     
@@ -105,13 +102,13 @@ class QuizManager {
   }
   
   
- func startGame(){
+  mutating func startGame(){
     score = 0
     questionNumber = 0
   }
   
   
- func playSound() {
+  mutating func playSound() {
     
     guard let url = Bundle.main.url(forResource: "clapping",
                                     withExtension: "mp3") else { return }
@@ -140,7 +137,7 @@ class QuizManager {
   }
   
   
- func playError() {
+  mutating func playError() {
     
     guard let url = Bundle.main.url(forResource: "error",
                                     withExtension: "mp3") else { return }

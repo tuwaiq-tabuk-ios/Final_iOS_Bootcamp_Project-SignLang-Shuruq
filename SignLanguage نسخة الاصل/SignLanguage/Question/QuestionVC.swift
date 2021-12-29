@@ -109,7 +109,7 @@ func startGame(action: UIAlertAction! = nil){
   valueScoreLabel.text = String(quizManager.getScore())
   
   questionLabel.text = quizManager.getQuestion()
-  
+  questionImage.image = quizManager.getImage()
   
   optionFirstButton.backgroundColor = UIColor.clear
   optionSecondButton.backgroundColor = UIColor.clear

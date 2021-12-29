@@ -10,13 +10,13 @@ import UIKit
 
 class Question {
 
-  let questionImage :String
+  let questionImage :UIImage
   let question: String
   let answers: [String]
   let correctAnswer :String
 
-  init(image :String ,question:String ,answers:[String] ,correctAnswer:String) {
-    questionImage = image
+  init(image :UIImage ,question:String ,answers:[String] ,correctAnswer:String) {
+    self.questionImage = image
     self.question = question
     self.answers = answers
     self.correctAnswer = correctAnswer

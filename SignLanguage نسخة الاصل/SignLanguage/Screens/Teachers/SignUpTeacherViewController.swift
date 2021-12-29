@@ -18,6 +18,8 @@ class SignUpTeacherViewController: UIViewController {
   @IBOutlet weak var phoneNumberTextField: UITextField!
   @IBOutlet weak var userNameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var confirmPassword: MainTF!
+  
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
@@ -47,6 +49,7 @@ class SignUpTeacherViewController: UIViewController {
       let phoneNumber = phoneNumberTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let userName = userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let confirmPassword = confirmPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
       // Create the user
       Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -62,8 +65,14 @@ class SignUpTeacherViewController: UIViewController {
           // User was created successfully, now store the first name and last name
           let db = Firestore.firestore()
           
-          db.collection("Teacher").addDocument(data: ["firstname":firstName, "lastname":lastName,"Email":email,"Password":password,"User name":userName,
-                                                  "uid": result!.user.uid ]) { (error) in
+          db.collection("Teacher").addDocument(data: ["firstname":firstName,
+                                                      "lastname":lastName,
+                                                      "Email":email,
+                                                      "phoneNumber":phoneNumber,
+                                                      "Password":password,
+                                                      "confirmPassword":confirmPassword,
+                                                      "User name":userName,
+                                                      "uid": result!.user.uid ]) { (error) in
             
             if error != nil {
               // Show error message
@@ -91,6 +100,7 @@ class SignUpTeacherViewController: UIViewController {
     Utilities.styleTextField(phoneNumberTextField)
     Utilities.styleTextField(userNameTextField)
     Utilities.styleTextField(passwordTextField)
+    Utilities.styleTextField(confirmPassword)
     Utilities.styleFilledButton(signUpButton)
   }
   
@@ -102,7 +112,8 @@ class SignUpTeacherViewController: UIViewController {
         phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        confirmPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
       
       return "Please fill in all fields."
     }
