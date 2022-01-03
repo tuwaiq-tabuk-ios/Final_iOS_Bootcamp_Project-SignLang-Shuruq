@@ -18,11 +18,11 @@ struct QuizManager {
   private var score = 0
   
   let quiz = [
-    Question(image: UIImage(named: "دال")!, question: "ماذا تعني هذه الصورة ؟",
+    Question(image: UIImage(named: "د")!, question: "ماذا تعني هذه الصورة ؟",
              answers: ["ا", "و", "ل", "د"],
              correctAnswer:"د"),
     
-    Question(image: UIImage(named: "تاء")!, question:  "ماذا تعني هذه الصورة ؟",
+    Question(image: UIImage(named: "ت")!, question:  "ماذا تعني هذه الصورة ؟",
              answers: ["تاء", "سين", "هاء", "ميم"] ,
              correctAnswer: "تاء"),
     
@@ -30,11 +30,11 @@ struct QuizManager {
              answers: ["لام", "حاء", "شين", "ال"],
              correctAnswer: "ال"),
     
-    Question(image: UIImage(named: "نون")!, question: "ماذا تعني هذه الصورة ؟",
+    Question(image: UIImage(named: "ن")!, question: "ماذا تعني هذه الصورة ؟",
              answers: ["واو", "باء", "ذال", "نون"],
              correctAnswer: "نون" ),
     
-    Question(image: UIImage(named: "شين")!, question: "ماذا تعني هذه الصورة ؟",
+    Question(image: UIImage(named: "ش")!, question: "ماذا تعني هذه الصورة ؟",
              answers: ["ضاء", "عين", "شين", "ثاء"] ,
              correctAnswer: "شين")]
   

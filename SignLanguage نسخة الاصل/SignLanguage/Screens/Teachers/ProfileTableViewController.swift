@@ -6,21 +6,21 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
-class ProfileTableViewController: UITableViewController {
-
-  let items: [Item] = [
-  Item(name: "Account", description: "Description item 0"),
-  Item(name: "Password", description: "Description item 1"),
-  Item(name: "Phone number", description: "Description item 2"),
-  Item(name: "Language", description: "Description item 3"),
-  Item(name: "sessions", description: "Description item 3"),
-  Item(name: "Username", description: "Description item 3")
-  ]
-  
-  var currentDescription: String = ""
+class ProfileTableViewController: UIViewController {
   
   @IBOutlet weak var avatarImageView: AvatarImageView!
+ 
+  @IBOutlet weak var nameLabel: UITextField!
+  @IBOutlet weak var emailLabel: UITextField!
+  @IBOutlet weak var password: UITextField!
+  @IBOutlet weak var PhoneLabel: UITextField!
+  @IBOutlet weak var userName: UITextField!
+  
+  
+  let db = Firestore.firestore()
   override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,9 +31,11 @@ class ProfileTableViewController: UITableViewController {
 
 setDefaultAvatar()
 setupContextMenu()
+    readUsers()
+
     }
 
-    // MARK: - Table view data source
+  
 
   private func setupContextMenu() {
       let interaction = UIContextMenuInteraction(delegate: self)
@@ -51,41 +53,25 @@ setupContextMenu()
   private func setDefaultAvatar() {
     avatarImageView.image = UIImage(named: "User Circle")
   }
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-      return items.count
-    }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reusable_cell", for: indexPath)
-
-        // Configure the cell...
-      cell.textLabel?.text = items[indexPath.row].name
-       return cell
-    }
-    
-
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-    currentDescription = items[indexPath.row].description
-    performSegue(withIdentifier: "show_detail", sender: nil)
+  func readUsers(){
+    if  let user = Auth.auth().currentUser?.uid{
+      let docRef = db.collection("Teacher").document(user)
+     
+      docRef.getDocument { (document, error) in
+        if let document = document, document.exists {
+          _ = document.data().map(String.init(describing:)) ?? "nil"
+          self.nameLabel.text = document.data()?["First Name"] as? String
+          self.emailLabel.text = document.data()?["Email"] as? String
+          self.PhoneLabel.text = document.data()?["phoneNumber"] as? String
+          self.password.text = document.data()?["Password"] as? String
+          self.userName.text = document.data()?["UserName"] as? String
+}
   }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-    if let destinationVC = segue.destination as? DetailVC {
-      destinationVC.descriptionText = currentDescription
-    }
-  }
-  }
+}
 
+  }
+}
 
 extension ProfileTableViewController : UIContextMenuInteractionDelegate {
   
@@ -122,7 +108,7 @@ extension ProfileTableViewController : UIContextMenuInteractionDelegate {
 
   extension ProfileTableViewController:UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
     
-    func imagePickerControllerDidCancel(_picker:UIImagePickerController) {
+    private func imagePickerControllerDidCancel(_picker:UIImagePickerController) {
       dismiss(animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

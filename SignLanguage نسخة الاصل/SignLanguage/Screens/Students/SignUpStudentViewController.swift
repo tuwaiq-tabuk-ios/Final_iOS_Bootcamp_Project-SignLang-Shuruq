@@ -15,7 +15,8 @@ class SignUpStudentViewController: UIViewController {
   @IBOutlet weak var firstNameTextField: UITextField!
   @IBOutlet weak var lastNameTextField: UITextField!
   @IBOutlet weak var emailTextField: UITextField!
-  @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var passwordTextField: MainTF!
+  @IBOutlet weak var confirmPassword: MainTF!
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
@@ -35,6 +36,7 @@ class SignUpStudentViewController: UIViewController {
     Utilities.styleTextField(lastNameTextField)
     Utilities.styleTextField(emailTextField)
     Utilities.styleTextField(passwordTextField)
+    Utilities.styleTextField(confirmPassword)
     Utilities.styleFilledButton(signUpButton)
   }
   
@@ -45,7 +47,9 @@ class SignUpStudentViewController: UIViewController {
     if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        confirmPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+         {
       
       return "Please fill in all fields."
     }
@@ -77,8 +81,12 @@ class SignUpStudentViewController: UIViewController {
       let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let confirmPassword = confirmPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines)
       
       // Create the user
+      
+        
+  
       Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
         
         // Check for errors
@@ -92,10 +100,13 @@ class SignUpStudentViewController: UIViewController {
           // User was created successfully, now store the first name and last name
           let db = Firestore.firestore()
           
-          db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": result!.user.uid ]) { (error) in
+          db.collection("student").addDocument(data: ["firstname":firstName,
+                                                      "lastname":lastName,
+                                                      "uid": result!.user.uid ]) { (error) in
             
             if error != nil {
               // Show error message
+            
               self.showError("Error saving user data")
             }
           }
@@ -107,6 +118,7 @@ class SignUpStudentViewController: UIViewController {
       }
     }
   }
+  
   
   func showError(_ message:String) {
     
