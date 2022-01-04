@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants {
+struct K {
     
     struct Storyboard {
         

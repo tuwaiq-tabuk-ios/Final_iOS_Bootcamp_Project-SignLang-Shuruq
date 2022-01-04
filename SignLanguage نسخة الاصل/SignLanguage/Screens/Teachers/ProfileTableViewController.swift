@@ -12,15 +12,15 @@ import FirebaseFirestore
 class ProfileTableViewController: UIViewController {
   
   @IBOutlet weak var avatarImageView: AvatarImageView!
- 
-  @IBOutlet weak var nameLabel: UITextField!
-  @IBOutlet weak var emailLabel: UITextField!
-  @IBOutlet weak var password: UITextField!
-  @IBOutlet weak var PhoneLabel: UITextField!
-  @IBOutlet weak var userName: UITextField!
+  @IBOutlet weak var editeProfile: UIButton!
+  @IBOutlet weak var editePassword: UIButton!
+  @IBOutlet weak var signOut: UIButton!
   
+  var Teacher: Teacher?
   
   let db = Firestore.firestore()
+
+  
   override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +31,7 @@ class ProfileTableViewController: UIViewController {
 
 setDefaultAvatar()
 setupContextMenu()
-    readUsers()
+    
 
     }
 
@@ -53,24 +53,42 @@ setupContextMenu()
   private func setDefaultAvatar() {
     avatarImageView.image = UIImage(named: "User Circle")
   }
+  
+  
+  @IBAction func editeProfile(_ sender: Any) {
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileVC
+    self.present(nextViewController, animated:true, completion:nil)
+  }
+  
+  @IBAction func editePassword(_ sender: Any) {
     
-  func readUsers(){
-    if  let user = Auth.auth().currentUser?.uid{
-      let docRef = db.collection("Teacher").document(user)
-     
-      docRef.getDocument { (document, error) in
-        if let document = document, document.exists {
-          _ = document.data().map(String.init(describing:)) ?? "nil"
-          self.nameLabel.text = document.data()?["First Name"] as? String
-          self.emailLabel.text = document.data()?["Email"] as? String
-          self.PhoneLabel.text = document.data()?["phoneNumber"] as? String
-          self.password.text = document.data()?["Password"] as? String
-          self.userName.text = document.data()?["UserName"] as? String
-}
+    let vc3 = storyboard?.instantiateViewController(withIdentifier: "Password")
+       
+      
+      if let viewController1 = vc3 {
+        navigationController?.pushViewController(viewController1, animated: true)
+          
+        }
   }
-}
+  
+  @IBAction func signOut(_ sender: Any) {
+    
+    let vc4 = storyboard?.instantiateViewController(withIdentifier: "MainVC")
+        if let viewController12 = vc4 {
+        navigationController?.pushViewController(viewController12, animated: true)
+          let firebaseAuth = Auth.auth()
+              do {
+                try firebaseAuth.signOut()
+                self.navigationController?.popToRootViewController(animated: true)
+                print("signOut")
+              } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
 
+        }
   }
+  
+}
 }
 
 extension ProfileTableViewController : UIContextMenuInteractionDelegate {

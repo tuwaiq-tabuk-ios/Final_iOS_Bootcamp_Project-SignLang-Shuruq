@@ -22,6 +22,8 @@ class LoginTeacherViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    navigationItem.backButtonTitle = ""
+
     // Do any additional setup after loading the view.
     setUpElements()
   }

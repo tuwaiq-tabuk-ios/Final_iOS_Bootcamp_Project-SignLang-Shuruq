@@ -17,7 +17,7 @@ class SignUpTeacherViewController: UIViewController {
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var phoneNumberTextField: UITextField!
   @IBOutlet weak var userNameTextField: UITextField!
-  @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var passwordTextField: MainTF!
   @IBOutlet weak var confirmPassword: MainTF!
   
   @IBOutlet weak var signUpButton: UIButton!
@@ -28,7 +28,8 @@ class SignUpTeacherViewController: UIViewController {
     super.viewDidLoad()
     
     setUpElements()
-    
+    navigationItem.backButtonTitle = ""
+
   }
   
   
@@ -107,12 +108,12 @@ class SignUpTeacherViewController: UIViewController {
           
           // User was created successfully, now store the first name and last name
           let db = Firestore.firestore()
-          
-          db.collection("Teacher").addDocument(data: ["firstname":firstName,
-                                                      "lastname":lastName,
-                                                      "phoneNumber":phoneNumber,
-                                                      "User name":userName,
-                                                      "uid": result!.user.uid ]) { (error) in
+          let id = result?.user.uid
+          db.collection("Teacher").document(id!).setData(["firstname":firstName,
+                                                          "lastname":lastName,
+                                                          "phoneNumber":phoneNumber,
+                                                          "User name":userName,
+                                                          "uid": result!.user.uid ]) { (error) in
             
             if error != nil {
               // Show error message

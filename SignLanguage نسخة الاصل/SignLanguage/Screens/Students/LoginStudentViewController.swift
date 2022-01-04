@@ -23,6 +23,8 @@ class LoginStudentViewController: UIViewController {
     super.viewDidLoad()
     
     setUpElements()
+    navigationItem.backButtonTitle = ""
+
   }
   
   func setUpElements() {
@@ -57,7 +59,7 @@ class LoginStudentViewController: UIViewController {
     }
     else {
       
-      let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? TabBarViewController
+      let homeViewController = self.storyboard?.instantiateViewController(identifier: K.Storyboard.homeViewController) as? TabBarViewController
       
       self.view.window?.rootViewController = homeViewController
       self.view.window?.makeKeyAndVisible()
