@@ -112,6 +112,7 @@ class SignUpTeacherViewController: UIViewController {
           db.collection("Teacher").document(id!).setData(["firstname":firstName,
                                                           "lastname":lastName,
                                                           "phoneNumber":phoneNumber,
+                                                          "password":password,
                                                           "User name":userName,
                                                           "uid": result!.user.uid ]) { (error) in
             
