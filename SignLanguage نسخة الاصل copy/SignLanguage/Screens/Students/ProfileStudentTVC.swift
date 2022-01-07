@@ -6,19 +6,19 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
-class ProfileStudentTableVC: UITableViewController {
-  
-  let items: [Item] = [
-  Item(name: "Account", description: "Description item 0"),
-  Item(name: "Password", description: "Description item 1"),
-  Item(name: "Language", description: "Description item 3"),
-  Item(name: "sessions", description: "Description item 3"),
-  ]
+class ProfileStudentVC: UIViewController {
+
   
   var currentDescription: String = ""
   
   @IBOutlet weak var avatarImageView: AvatarImageView!
+  @IBOutlet weak var editeProfile: UIButton!
+  @IBOutlet weak var editePassword: UIButton!
+  @IBOutlet weak var signOut: UIButton!
+  
   override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,45 +48,48 @@ class ProfileStudentTableVC: UITableViewController {
   private func setDefaultAvatar() {
     avatarImageView.image = UIImage(named: "User Circle")
   }
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-      return items.count
-    }
-
+  
+  @IBAction func editeProfile(_ sender: Any) {
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reusable_cell", for: indexPath)
-
-        // Configure the cell...
-      cell.textLabel?.text = items[indexPath.row].name
-        return cell
-    }
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EditeProfile") as! EditeProfile
+    self.present(nextViewController, animated:true, completion:nil)
+  }
     
-
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  
+  @IBAction func editePassword(_ sender: Any) {
     
-    currentDescription = items[indexPath.row].description
-    performSegue(withIdentifier: "show_detail", sender: nil)
+    let vc3 = storyboard?.instantiateViewController(withIdentifier: "EditePassword")
+       
+      
+      if let viewController1 = vc3 {
+        navigationController?.pushViewController(viewController1, animated: true)
+          
+        }
+    
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-    if let destinationVC = segue.destination as? DetailVC {
-      destinationVC.descriptionText = currentDescription
-    }
+  @IBAction func signOut(_ sender: Any) {
+    
+    let vc4 = storyboard?.instantiateViewController(withIdentifier: "MainVC")
+        if let viewController12 = vc4 {
+        navigationController?.pushViewController(viewController12, animated: true)
+          let firebaseAuth = Auth.auth()
+              do {
+                try firebaseAuth.signOut()
+                self.navigationController?.popToRootViewController(animated: true)
+                print("signOut")
+              } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+
+        }
   }
+    
   }
+}
 
 
-extension ProfileStudentTableVC : UIContextMenuInteractionDelegate {
+extension ProfileStudentVC : UIContextMenuInteractionDelegate {
   
   func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
   previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) ->
@@ -119,7 +122,7 @@ extension ProfileStudentTableVC : UIContextMenuInteractionDelegate {
   
 }
 
-  extension ProfileStudentTableVC:UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+  extension ProfileStudentVC:UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_picker:UIImagePickerController) {
       dismiss(animated: true, completion: nil)

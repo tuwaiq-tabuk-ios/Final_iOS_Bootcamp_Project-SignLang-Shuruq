@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import CoreMedia
 
 class ProfileVC: UIViewController {
   
@@ -20,11 +21,11 @@ class ProfileVC: UIViewController {
   @IBOutlet weak var phoneNumberTF: UITextField!
   @IBOutlet weak var userNameTF: UITextField!
   
-  var firstName = "nil"
-  var lastName = "nil"
+  var firstName = "firstname"
+  var lastName = "lastname"
   var email = "nil"
-  var phonenumber = 0
-  var username = "nil"
+  var phonenumber = "phoneNumber"
+  var username = "User name"
   
   
   override func viewDidLoad() {
@@ -52,40 +53,19 @@ class ProfileVC: UIViewController {
           
           self.lastName = data["lastname"] as! String
           self.lastnameTF.text = self.lastName
+  
           
-//       self.phonenumber = ["phoneNumber"] as! Int
-//       self.phoneNumberTF.text = self.phonenumber
+         self.phonenumber = data["phoneNumber"] as! String
+         self.phoneNumberTF.text = self.phonenumber
 
           self.username = data["User name"] as! String
           self.userNameTF.text = self.username
           
           
-          
-          
         }
       }
     }
-//    
-//    db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["firstname":self.firstName,"lastname":self.lastName ], completion: <#T##((Error?) -> Void)?##((Error?) -> Void)?##(Error?) -> Void#>)
-
-          //           self.firstnameTF.text = self.firstName
-          //           self.lastnameTF.text = self.lastName
-                    
-          //           self.phoneNumberTF.hashValue = self.phonenumber
-          //           self.userNameTF.text = self.username
-
-        
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+ 
   }
   
   @IBAction func sendProfile(_ sender: Any) {
@@ -106,26 +86,20 @@ class ProfileVC: UIViewController {
            }
           }
     
+    self.firstName = self.firstnameTF.text!
+    self.lastName = self.lastnameTF.text!
+    self.phonenumber = self.phoneNumberTF.text!
+    self.username = self.userNameTF.text!
     
-//    Auth.auth().currentUser?.updatePhoneNumber(phoneNumberTF.text) { [self] error in
-//      if error == nil{
-//          let washingtonRef = db.collection("Teacher").document(Auth.auth().currentUser!.uid)
-//          washingtonRef.updateData([
-//            "email": EmailTF.text!
-//          ]) { err in
-//            if let err = err {
-//              print("Error updating document: \(err)")
-//            } else {
-//              print("Document successfully updated")
-//            }
-//          }
-//
-//         }
-//        }
-//  }
-//
-  
-}
-
-}
-
+    db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["firstname" :firstName, "lastname": lastName ,"User name":username])  {  err in
+      
+          if let  err1 = err {
+            print("Error updating document: \(err1)")
+          } else {
+            print("Document successfully updated")
+          }
+          }
+        }
+      }
+ 
+ 

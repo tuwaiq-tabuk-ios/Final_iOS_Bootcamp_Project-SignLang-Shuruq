@@ -78,10 +78,10 @@ static let identifier = "SettingTableViewCell"
         iconContainer.backgroundColor = nil
     }
     
-    public func configure(with model: SettingsOption){
-        label.text = model.title
-        iconImageView.image = model.icon
-      iconContainer.backgroundColor = model.iconBackgroundColor
-    }
-    
+//    public func configure(with model: SettingsOption){
+//        label.text = model.title
+//        iconImageView.image = model.icon
+//      iconContainer.backgroundColor = model.iconBackgroundColor
+//    }
+//    
 }
