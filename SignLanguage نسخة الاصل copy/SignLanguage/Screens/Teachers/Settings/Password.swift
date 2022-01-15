@@ -12,6 +12,7 @@ import FirebaseFirestore
 class Password: UIViewController {
   let db = Firestore.firestore()
 
+  // MARK: - IBOutlet
   @IBOutlet weak var newPasswordTF: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   
@@ -20,17 +21,19 @@ class Password: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
     
+    overrideUserInterfaceStyle = .light
+
     // Do any additional setup after loading the view.
 let user = Auth.auth().currentUser
-print(user?.uid)
+    print("\(String(describing: user?.uid))")
 
 if let currentUser = user {
   db.collection("Teacher").document(currentUser.uid).getDocument { doc, err in
     
     if err != nil {
-      print(err)
+      print(err!)
     } else {
-      let data = doc!.data()!
+      _ = doc!.data()!
       
       self.newPasswordTF.text = self.Password
     }

@@ -1,17 +1,16 @@
 //
-//  CellTableViewCell.swift
+//  AppointmentsCell.swift
 //  SignLanguage
 //
-//  Created by Shorouq AlAnzi on 24/05/1443 AH.
+//  Created by Shorouq AlAnzi on 07/06/1443 AH.
 //
 
 import UIKit
 
-class CellTableViewCell: UITableViewCell {
+class AppointmentsCell: UITableViewCell {
 
-  // MARK: - IBOutlet
   
-  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
   
   override func awakeFromNib() {
         super.awakeFromNib()

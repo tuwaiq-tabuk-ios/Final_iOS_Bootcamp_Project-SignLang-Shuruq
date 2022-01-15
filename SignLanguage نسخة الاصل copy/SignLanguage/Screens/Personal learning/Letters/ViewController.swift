@@ -10,19 +10,16 @@ import UIKit
 class ViewController: UIViewController {
 
   
-  
-  let name = [ "الالف", "الباء" , "التاء", "الثاء", "الجيم" , "الحاء" , "الخاء" , "دال" , "ذال" ,"راء" , "زاء" , "سين" , "شين" , "صاء" , "ضاء" ,"طاء","ظاء", "عين"  , "غين" , "فاء" , "قاف"
+  let name = ["الالف", "الباء" , "التاء", "الثاء", "الجيم" , "الحاء" , "الخاء" , "دال" , "ذال" ,"راء" , "زاء" , "سين" , "شين" , "صاء" , "ضاء" ,"طاء","ظاء", "عين"  , "غين" , "فاء" , "قاف"
                , "كاف" , "لام" , "ميم" , "نون" ,"هاء", "واو" , "ياء"]
   
-  
+  // MARK: - IBOutlet
   @IBOutlet weak var tableView: UITableView!
-  
-
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    //navigationItem.backButtonTitle = ""
+    overrideUserInterfaceStyle = .light
 
   }
 }
@@ -37,20 +34,24 @@ extension ViewController : UITableViewDelegate , UITableViewDataSource {
     return name.count
   }
   
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CellTableViewCell
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+                                             for: indexPath) as? CellTableViewCell
     cell?.nameLabel.text = name[indexPath.row]
     return cell!
   }
   
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController" ) as? DetailViewController
+    
+    let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewControllers" ) as? DetailViewControllers
     
     vc?.image = UIImage(named: name[indexPath.row])!
     vc?.name = name[indexPath.row]
+    
     self.navigationController?.pushViewController(vc!, animated: true)
     
-    
-
   }
 }

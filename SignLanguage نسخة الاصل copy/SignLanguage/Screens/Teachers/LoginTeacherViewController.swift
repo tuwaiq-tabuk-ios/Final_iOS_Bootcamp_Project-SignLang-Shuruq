@@ -11,18 +11,14 @@ import FirebaseAuth
 class LoginTeacherViewController: UIViewController {
   
   @IBOutlet weak var emailTextField: UITextField!
-  
-  
   @IBOutlet weak var passwordTextField: UITextField!
-  
   @IBOutlet weak var loginButton: UIButton!
-  
   @IBOutlet weak var errorLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.backButtonTitle = ""
+    overrideUserInterfaceStyle = .light
 
     // Do any additional setup after loading the view.
     setUpElements()
@@ -55,7 +51,7 @@ class LoginTeacherViewController: UIViewController {
       }
       else {
         
-        let homeViewController = self.storyboard?.instantiateViewController(identifier: ConstantsTeacher.Storyboard.homeViewController) as? ProfileTableViewController
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: K.Storyboard.teacherVCIdentifier) as? TabbarTeacher
         
         self.view.window?.rootViewController = homeViewController
         self.view.window?.makeKeyAndVisible()

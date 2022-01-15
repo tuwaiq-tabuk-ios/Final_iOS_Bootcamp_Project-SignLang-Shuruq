@@ -12,23 +12,24 @@ import FirebaseFirestore
 
 class SignUpTeacherViewController: UIViewController {
   
-  @IBOutlet weak var firstNameTextField: UITextField!
-  @IBOutlet weak var lastNameTextField: UITextField!
+  
+  // MARK : - IBOutlet
+  @IBOutlet weak var fullNameTextField: UITextField!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var phoneNumberTextField: UITextField!
   @IBOutlet weak var userNameTextField: UITextField!
   @IBOutlet weak var passwordTextField: MainTF!
   @IBOutlet weak var confirmPassword: MainTF!
-  
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
+  // view controller lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setUpElements()
-    navigationItem.backButtonTitle = ""
+    overrideUserInterfaceStyle = .light
 
   }
   
@@ -39,21 +40,20 @@ class SignUpTeacherViewController: UIViewController {
     errorLabel.alpha = 0
     
     // Style the elements
-    Utilities.styleTextField(firstNameTextField)
-    Utilities.styleTextField(lastNameTextField)
+    Utilities.styleTextField(fullNameTextField)
     Utilities.styleTextField(emailTextField)
     Utilities.styleTextField(phoneNumberTextField)
     Utilities.styleTextField(userNameTextField)
     Utilities.styleTextField(passwordTextField)
     Utilities.styleTextField(confirmPassword)
     Utilities.styleFilledButton(signUpButton)
-
   }
+  
+  
   func validateFields() -> String? {
     
     // Check that all fields are filled in
-    if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+    if fullNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         phoneNumberTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
         emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -87,13 +87,12 @@ class SignUpTeacherViewController: UIViewController {
     else {
       
       // Create cleaned versions of the data
-      let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      let fullName = fullNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let phoneNumber = phoneNumberTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let userName = userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-      let confirmPassword = confirmPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+      _ = confirmPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
       
       // Create the user
       Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -102,18 +101,17 @@ class SignUpTeacherViewController: UIViewController {
         if err != nil {
           
           // There was an error creating the user
-          self.showError("Error creating user")
+          self.showError("Error creating user: \(String(describing: err?.localizedDescription))")
         }
         else {
           
           // User was created successfully, now store the first name and last name
           let db = Firestore.firestore()
           let id = result?.user.uid
-          db.collection("Teacher").document(id!).setData(["firstname":firstName,
-                                                          "lastname":lastName,
-                                                          "phoneNumber":phoneNumber,
-                                                          "password":password,
-                                                          "User name":userName,
+          db.collection("Teacher").document(id!).setData(["fullName": fullName,
+                                                          "phoneNumber": phoneNumber,
+                                                          "User name": userName,
+                                                          "email":email,
                                                           "uid": result!.user.uid ]) { (error) in
             
             if error != nil {
@@ -128,9 +126,9 @@ class SignUpTeacherViewController: UIViewController {
       }
     }
   }
-
-    
-    
+  
+  
+  
   
   
   func showError(_ message:String) {
@@ -142,10 +140,10 @@ class SignUpTeacherViewController: UIViewController {
   
   func transitionToHome() {
     
-    let homeViewController = self.storyboard?.instantiateViewController(identifier: ConstantsTeacher.Storyboard.homeViewController) as? ProfileTableViewController
+    let teacherVC = self.storyboard?.instantiateViewController(identifier: K.Storyboard.teacherVCIdentifier) as? TabbarTeacher
     
-    self.view.window?.rootViewController = homeViewController
+    self.view.window?.rootViewController = teacherVC
     self.view.window?.makeKeyAndVisible()
-}
+  }
   
 }

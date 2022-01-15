@@ -9,6 +9,8 @@ import UIKit
 
 class DetailVC: UIViewController {
  
+  // MARK: - IBOutlet
+
   @IBOutlet weak var descriptionLabel: UITextField!
   
   var descriptionText: String = ""
@@ -17,19 +19,13 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+      overrideUserInterfaceStyle = .light
+
     }
     
   override func viewWillAppear(_ animated: Bool) {
    descriptionLabel.text = descriptionText
  }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

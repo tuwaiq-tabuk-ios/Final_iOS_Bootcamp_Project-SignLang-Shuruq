@@ -9,7 +9,7 @@ import UIKit
 
 class PhrasesAndGreetingsVC: UIViewController {
 
-  
+  // MARK: - IBOutlet
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   
@@ -20,19 +20,13 @@ class PhrasesAndGreetingsVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    overrideUserInterfaceStyle = .light
+
 
   nameLabel.text = "\(name)"
   imageView.image = image
     
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
  
 }
