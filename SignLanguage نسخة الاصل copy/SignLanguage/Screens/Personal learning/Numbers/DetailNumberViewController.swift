@@ -9,6 +9,8 @@ import UIKit
 
 class DetailNumberViewController: UIViewController {
 
+  // MARK: - IBOutlet
+  
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   
@@ -17,6 +19,8 @@ class DetailNumberViewController: UIViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
+
+    overrideUserInterfaceStyle = .light
 
         // Do any additional setup after loading the view.
     nameLabel.text = "\(name)"

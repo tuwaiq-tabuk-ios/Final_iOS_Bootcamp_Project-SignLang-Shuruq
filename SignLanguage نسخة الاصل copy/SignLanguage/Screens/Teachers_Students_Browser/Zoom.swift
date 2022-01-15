@@ -24,7 +24,9 @@ class zoom : UIViewController, WKUIDelegate {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+      overrideUserInterfaceStyle = .light
+
         let myURL = URL(string:"https://zoom.us")
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)

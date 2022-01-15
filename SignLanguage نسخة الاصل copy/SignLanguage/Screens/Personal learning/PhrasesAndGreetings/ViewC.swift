@@ -11,24 +11,18 @@ class ViewC: UIViewController {
 
   let PhrasesAndGreetings = ["أحبك", "‎⁨أراك لاحقا⁩" , "أنا اراقبك" , "‎⁨اتمنى لك حياة سعيدة" , "اقتباس", "انت⁩","سوال", "عمل جيد⁩","لا⁩","‎⁨لست متاكد⁩","موافق","‎⁨هذا رهيب⁩","هذا ممتاز⁩" ]
   
+  // MARK: - IBOutlet
+
+  
   @IBOutlet weak var tableView: UITableView!
   override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    overrideUserInterfaceStyle = .light
+
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }
 
 extension ViewC : UITableViewDelegate , UITableViewDataSource {
@@ -50,7 +44,7 @@ extension ViewC : UITableViewDelegate , UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "PhrasesAndGreetingsVC" ) as? PhrasesAndGreetingsVC
     
-    var namenumber = PhrasesAndGreetings[indexPath.row]
+    let namenumber = PhrasesAndGreetings[indexPath.row]
     print(namenumber)
     vc?.image = UIImage(named: PhrasesAndGreetings[indexPath.row])!
     vc?.name = PhrasesAndGreetings[indexPath.row]

@@ -19,6 +19,9 @@ class SearchResultsController : UIViewController, WKUIDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      
+      overrideUserInterfaceStyle = .light
+      
      myView.addSubview(webView)
       guard let myURL = URL(string:"https://www.youtube.com/results?search_query=Sign+Language+Lessons+in+the+Middle+East") else {
         return

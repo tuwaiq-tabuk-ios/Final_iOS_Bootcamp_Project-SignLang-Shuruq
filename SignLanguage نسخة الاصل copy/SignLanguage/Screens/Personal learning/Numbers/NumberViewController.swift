@@ -11,10 +11,13 @@ class NumberViewController: UIViewController {
 
   let numbers = [ "١", "٢" , "٣", "٤", "٥" , "٦" , "٧" , "٨" , "٩" ,"١٠" , "١١" , "١٢" , "١٣" , "١٤" , "١٥" , "١٦"  , "١٧" , "١٨" , "١٩", "٢٠" , "٢١" , "٢٢" , "٣٠" , "١٠٠"]
   
+  // MARK: - IBOutlet
   @IBOutlet weak var tableView: UITableView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
+
+      overrideUserInterfaceStyle = .light
 
         // Do any additional setup after loading the view.
     }
@@ -39,7 +42,7 @@ extension NumberViewController : UITableViewDelegate , UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "DetailNumberViewController" ) as? DetailNumberViewController
     
-    var namenumber = numbers[indexPath.row]
+    let namenumber = numbers[indexPath.row]
     print(namenumber)
     vc?.image = UIImage(named: numbers[indexPath.row])!
     vc?.name = numbers[indexPath.row]

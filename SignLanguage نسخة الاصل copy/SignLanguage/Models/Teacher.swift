@@ -16,14 +16,14 @@ struct Teacher {
   var exper: Int
   var email: String
   var requestDate: [DateTime]
-  var  reservationDate: [DateTime]
+  var reservationDate: [DateTime]
   var images: UIImage?
   var phoneNumber: String
   var userName: String
   
 }
 
-let array:[Teacher] = [
+let array: [Teacher] = [
   Teacher(firstname: "مصطفى ",
           lastname: "احمد",
           age: 27,
@@ -209,10 +209,3 @@ let array:[Teacher] = [
           phoneNumber: "056909999",
           userName: "samh40")]
   
-
-
-struct DateTime {
-  let date:String
-  let time:[String]
-}
-

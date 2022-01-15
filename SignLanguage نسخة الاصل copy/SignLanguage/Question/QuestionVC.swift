@@ -15,6 +15,8 @@ class QuestionVC: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
 
+    overrideUserInterfaceStyle = .light
+
     configureButons()
     startGame()
     updateUI()

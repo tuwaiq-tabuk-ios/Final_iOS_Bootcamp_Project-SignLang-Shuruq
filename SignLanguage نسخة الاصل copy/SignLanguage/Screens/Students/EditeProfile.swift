@@ -14,7 +14,8 @@ class EditeProfile: UIViewController {
   
   let db = Firestore.firestore()
 
-  
+  // MARK: - IBOutlet
+
   @IBOutlet weak var firstNameTF: UITextField!
   @IBOutlet weak var lastNameTF: UITextField!
   @IBOutlet weak var emailTF: UITextField!
@@ -26,6 +27,9 @@ class EditeProfile: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
 
+    overrideUserInterfaceStyle = .light
+
+    
         // Do any additional setup after loading the view.
    
     let user = Auth.auth().currentUser

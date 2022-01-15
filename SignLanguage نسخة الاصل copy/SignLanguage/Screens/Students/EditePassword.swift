@@ -14,7 +14,7 @@ class EditePassword: UIViewController {
   
   let db = Firestore.firestore()
 
-
+  // MARK: - IBOutlet
   @IBOutlet weak var editePasswordTF: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   
@@ -22,18 +22,22 @@ class EditePassword: UIViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
+    
+    overrideUserInterfaceStyle = .light
+
 
         // Do any additional setup after loading the view.
     let user = Auth.auth().currentUser
-    print(user?.uid)
+    
+    print("\(String(describing: user?.uid))")
     
     if let currentUser = user {
       db.collection("student").document(currentUser.uid).getDocument { doc, err in
         
         if err != nil {
-          print(err)
+          print(err!)
         } else {
-          let data = doc!.data()!
+          _ = doc!.data()!
           
           self.editePasswordTF.text = self.Password
         }

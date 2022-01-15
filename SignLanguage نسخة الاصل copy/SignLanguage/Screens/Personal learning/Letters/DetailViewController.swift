@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewControllers: UIViewController {
   
+  // MARK: - IBOutlet
   @IBOutlet weak var imageView: UIImageView!
-  
   @IBOutlet weak var nameLabel: UILabel!
   
   var image = UIImage()
@@ -18,6 +18,9 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
     
+    
+    overrideUserInterfaceStyle = .light
+
     nameLabel.text = "\(name)"
     imageView.image = image
 
