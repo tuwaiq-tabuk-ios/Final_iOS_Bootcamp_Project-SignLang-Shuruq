@@ -61,10 +61,8 @@ class DetalisViewController: UIViewController {
                                                      "email":user?.email,
                                                      "studentId": user!.uid,
                                                      "TeacherId": uid])
-
-
     }
-  }
+ 
 
 //    let reservation = self.storyboard?.instantiateViewController(identifier: K.Storyboard.appointments) as? InfopersonalVC
 //    
@@ -74,4 +72,9 @@ class DetalisViewController: UIViewController {
 //  }
 
   
-
+  @IBAction func dateAndTime(_ sender: Any) {
+    
+    
+  }
+  
+}
