@@ -23,5 +23,5 @@ Family of people with deaf disability and anyone interested in learning the sign
    - Sign language test in a fun way
    - Allow to search for sign language in the YouTube search engine
    - Diversity of the way lessons are presented through photos and videos
-   - Add motivational notices on each page
+   -  Add motivational notices on some screens
    - It contains a private file for the user
