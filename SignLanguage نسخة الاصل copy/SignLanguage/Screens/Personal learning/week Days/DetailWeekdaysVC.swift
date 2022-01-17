@@ -10,12 +10,15 @@ import UIKit
 class DetailWeekdaysVC: UIViewController {
 
   // MARK: - IBOutlet
+  
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   
   var image = UIImage()
   var name = ""
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
 

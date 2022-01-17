@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class TabbarTeacher: UITabBarController {
+class TabBarTeacher: UITabBarController {
 
 
 }

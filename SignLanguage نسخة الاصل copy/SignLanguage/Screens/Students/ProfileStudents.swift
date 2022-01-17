@@ -11,7 +11,8 @@ import FirebaseFirestore
 
 class ProfileStudents: UIViewController {
   
-  // the profile students
+ // MARK: - IBOutlet
+  
   @IBOutlet weak var editeProfile: UIButton!
   @IBOutlet weak var editePassword: UIButton!
   @IBOutlet weak var signOut: UIButton!
@@ -21,12 +22,17 @@ class ProfileStudents: UIViewController {
   
   let db = Firestore.firestore()
 
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
      super.viewDidLoad()
     
     overrideUserInterfaceStyle = .light
 
   }
+  
+  // MARK: - IBAction
+
   
   @IBAction func editeProfile(_ sender: Any) {
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

@@ -8,6 +8,7 @@
 import UIKit
 
 @IBDesignable
+
 class AvatarImageView: UIImageView {
     override init(image: UIImage?) {
         super.init(image: image)

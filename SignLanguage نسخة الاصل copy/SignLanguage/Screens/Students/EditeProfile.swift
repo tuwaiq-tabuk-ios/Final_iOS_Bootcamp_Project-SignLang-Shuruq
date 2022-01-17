@@ -24,6 +24,8 @@ class EditeProfile: UIViewController {
   var lastName = "nil"
   var email = "nil"
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,9 @@ class EditeProfile: UIViewController {
     }
     
   }
+  
+  // MARK: - IBAction
+
   @IBAction func sendProfile(_ sender: Any) {
     
     Auth.auth().currentUser?.updateEmail(to: emailTF.text!) { [self] error in

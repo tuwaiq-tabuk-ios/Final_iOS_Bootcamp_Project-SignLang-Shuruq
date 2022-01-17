@@ -10,10 +10,14 @@ import FirebaseAuth
 
 class LoginStudentViewController: UIViewController {
   
+  // MARK: - IBOutlet
+
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
+  
+  //  MARK: - View controller Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,29 +27,18 @@ class LoginStudentViewController: UIViewController {
 
   }
   
-  func setUpElements() {
-    
-    // Hide the error label
-    errorLabel.alpha = 0
-    
-    // Style the elements
-    Utilities.styleTextField(emailTextField)
-    Utilities.styleTextField(passwordTextField)
-    Utilities.styleFilledButton(loginButton)
-    
-  }
-  
-  
-  
+  // MARK: - IBAction
+
   @IBAction func loginTapped(_ sender: Any){
     
-  // TODO: Validate Text Fields
+  // TODO:- Validate Text Fields
     
-  // Create cleaned versions of the text field
-  let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+   // Create of the text field
+    let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
   let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
   
   // Signing in the user
+    
   Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
     
     if error != nil {
@@ -63,5 +56,18 @@ class LoginStudentViewController: UIViewController {
   }
 }
   
+  // MARK: - Methods
+  
+  func setUpElements() {
+    
+    // Hide the error label
+    errorLabel.alpha = 0
+    
+    // Style the elements
+    Utilities.styleTextField(emailTextField)
+    Utilities.styleTextField(passwordTextField)
+    Utilities.styleFilledButton(loginButton)
+    
+  }
 }
 

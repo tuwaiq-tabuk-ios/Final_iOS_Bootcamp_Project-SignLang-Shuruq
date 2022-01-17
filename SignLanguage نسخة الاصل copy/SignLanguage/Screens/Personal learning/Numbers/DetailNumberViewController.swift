@@ -17,6 +17,8 @@ class DetailNumberViewController: UIViewController {
   var image = UIImage()
   var name = ""
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
 

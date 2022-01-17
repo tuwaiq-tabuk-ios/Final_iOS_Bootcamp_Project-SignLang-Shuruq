@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD013E8C27955B38006E2163 /* FSCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD013E8B27955B38006E2163 /* FSCollectionReference.swift */; };
+		BD013E8E27955F10006E2163 /* FSTeacherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD013E8D27955F10006E2163 /* FSTeacherManager.swift */; };
 		BD073A3E277877E600F6BA6D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD073A3D277877E600F6BA6D /* AvatarImageView.swift */; };
 		BD091A5D276F286C001E2C5A /* LoginStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD091A5C276F286C001E2C5A /* LoginStudentViewController.swift */; };
 		BD091A5F276F2960001E2C5A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD091A5E276F2960001E2C5A /* Utilities.swift */; };
@@ -55,16 +57,18 @@
 		BDAED678277C55AF00E293CA /* ViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED677277C55AE00E293CA /* ViewC.swift */; };
 		BDAED67A277C68EC00E293CA /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED679277C68EC00E293CA /* NumberViewController.swift */; };
 		BDAED67C277C750300E293CA /* DetailNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED67B277C750300E293CA /* DetailNumberViewController.swift */; };
-		BDC97D332790BA380046DA0A /* TabbarTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC97D322790BA380046DA0A /* TabbarTeacher.swift */; };
+		BDBE96E62795C66E00F09E8F /* FSStudentManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE96E52795C66E00F09E8F /* FSStudentManger.swift */; };
+		BDC97D332790BA380046DA0A /* TabBarTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC97D322790BA380046DA0A /* TabBarTeacher.swift */; };
 		BDD879EE2778644300D61E6D /* clapping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDD879EC2778644300D61E6D /* clapping.mp3 */; };
 		BDD879EF2778644300D61E6D /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDD879ED2778644300D61E6D /* error.mp3 */; };
 		BDDB53C2275EBFE9005485A0 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB53C1275EBFE9005485A0 /* SearchResultsController.swift */; };
 		BDDE2072276762FB001C440C /* SignUpTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */; };
 		BDDE207427676481001C440C /* LoginTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE207327676481001C440C /* LoginTeacherViewController.swift */; };
-		BDF6230F278B02BA00BC6626 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF6230E278B02BA00BC6626 /* DateTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD013E8B27955B38006E2163 /* FSCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCollectionReference.swift; sourceTree = "<group>"; };
+		BD013E8D27955F10006E2163 /* FSTeacherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTeacherManager.swift; sourceTree = "<group>"; };
 		BD073A3D277877E600F6BA6D /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		BD091A5C276F286C001E2C5A /* LoginStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStudentViewController.swift; sourceTree = "<group>"; };
 		BD091A5E276F2960001E2C5A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -112,13 +116,13 @@
 		BDAED677277C55AE00E293CA /* ViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewC.swift; sourceTree = "<group>"; };
 		BDAED679277C68EC00E293CA /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
 		BDAED67B277C750300E293CA /* DetailNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNumberViewController.swift; sourceTree = "<group>"; };
-		BDC97D322790BA380046DA0A /* TabbarTeacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarTeacher.swift; sourceTree = "<group>"; };
+		BDBE96E52795C66E00F09E8F /* FSStudentManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSStudentManger.swift; sourceTree = "<group>"; };
+		BDC97D322790BA380046DA0A /* TabBarTeacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTeacher.swift; sourceTree = "<group>"; };
 		BDD879EC2778644300D61E6D /* clapping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clapping.mp3; sourceTree = "<group>"; };
 		BDD879ED2778644300D61E6D /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		BDDB53C1275EBFE9005485A0 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTeacherViewController.swift; sourceTree = "<group>"; };
 		BDDE207327676481001C440C /* LoginTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTeacherViewController.swift; sourceTree = "<group>"; };
-		BDF6230E278B02BA00BC6626 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD013E8A27955B1A006E2163 /*  Manager_Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BD013E8B27955B38006E2163 /* FSCollectionReference.swift */,
+			);
+			path = " Manager_Helpers";
+			sourceTree = "<group>";
+		};
+		BD013E8F27955F1F006E2163 /*  Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BD013E8D27955F10006E2163 /* FSTeacherManager.swift */,
+				BDBE96E52795C66E00F09E8F /* FSStudentManger.swift */,
+			);
+			path = " Managers";
+			sourceTree = "<group>";
+		};
 		BD1768E7276FBB7A005EA887 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,12 +173,14 @@
 			children = (
 				BD1768EB276FBD76005EA887 /* Settings */,
 				BD0DB0A127841B4B005F32DA /* TeacherViewController.swift */,
+				BDC97D322790BA380046DA0A /* TabBarTeacher.swift */,
 				BD9D3EE027824EBC00A4B392 /* selectionTeacher.swift */,
 				BDDE207327676481001C440C /* LoginTeacherViewController.swift */,
 				BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */,
 				BD29E8462786D006000F38A9 /* DetalisViewController.swift */,
 				BD41D75E278A265E004B9EA0 /* Appointments.swift */,
 				BD3EF22A278CCF3400C318A4 /* AppointmentsCell.swift */,
+				BD9A51432782D30A00CDDD77 /* AddStudents.swift */,
 			);
 			path = Teachers;
 			sourceTree = "<group>";
@@ -201,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				BD7704B42752D95C00E82623 /* Main.storyboard */,
-				BD9A51432782D30A00CDDD77 /* AddStudents.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,7 +272,6 @@
 		BD5B8A64277CD71D00BEC85C /* Personal learning */ = {
 			isa = PBXGroup;
 			children = (
-				BD163904277B947C007566B8 /* CellTableViewCell.swift */,
 				BD5B8A6F277CF68100BEC85C /* PhrasesAndGreetings */,
 				BD5B8A6E277CF65800BEC85C /* week Days */,
 				BD5B8A67277CD7AA00BEC85C /* Numbers */,
@@ -298,7 +319,6 @@
 		BD7704A22752D95B00E82623 = {
 			isa = PBXGroup;
 			children = (
-				BDC97D322790BA380046DA0A /* TabbarTeacher.swift */,
 				BD7704AD2752D95C00E82623 /* SignLanguage */,
 				BD7704AC2752D95C00E82623 /* Products */,
 				BD364394278EF0A7005B1D4B /* Frameworks */,
@@ -316,6 +336,8 @@
 		BD7704AD2752D95C00E82623 /* SignLanguage */ = {
 			isa = PBXGroup;
 			children = (
+				BD013E8F27955F1F006E2163 /*  Managers */,
+				BD013E8A27955B1A006E2163 /*  Manager_Helpers */,
 				BD406ED6278471B40007060C /* Commom */,
 				BDD56913278B021B00BC79E6 /* Models */,
 				BD1768EA276FBBED005EA887 /* Support */,
@@ -349,7 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				BD4E3B4A278379AE00E2442B /* Teacher.swift */,
-				BDF6230E278B02BA00BC6626 /* DateTime.swift */,
+				BD163904277B947C007566B8 /* CellTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,6 +482,7 @@
 				BDAED678277C55AF00E293CA /* ViewC.swift in Sources */,
 				BD8D929B2769314B00B65AC6 /* QuestionVC.swift in Sources */,
 				BD7704AF2752D95C00E82623 /* AppDelegate.swift in Sources */,
+				BD013E8E27955F10006E2163 /* FSTeacherManager.swift in Sources */,
 				BD163905277B947C007566B8 /* CellTableViewCell.swift in Sources */,
 				BD9D3EE127824EBC00A4B392 /* selectionTeacher.swift in Sources */,
 				BD8D9297276930C400B65AC6 /* Question.swift in Sources */,
@@ -469,8 +492,9 @@
 				BD178A3A2779A6CB00145B80 /* UIView+Extension.swift in Sources */,
 				BD8E7EE42784DB36009BF4A1 /* EditePassword.swift in Sources */,
 				BD85E4FA27777EB9004F1AF6 /* DetailVC.swift in Sources */,
+				BD013E8C27955B38006E2163 /* FSCollectionReference.swift in Sources */,
+				BDBE96E62795C66E00F09E8F /* FSStudentManger.swift in Sources */,
 				BD091A5D276F286C001E2C5A /* LoginStudentViewController.swift in Sources */,
-				BDF6230F278B02BA00BC6626 /* DateTime.swift in Sources */,
 				BD719EED2778DBE600190DBC /* MainTF.swift in Sources */,
 				BD7704B12752D95C00E82623 /* SceneDelegate.swift in Sources */,
 				BD4E3B4D27837FED00E2442B /* ProfileVC.swift in Sources */,
@@ -487,7 +511,7 @@
 				BD073A3E277877E600F6BA6D /* AvatarImageView.swift in Sources */,
 				BD6BC5872764166E00FCE451 /* Zoom.swift in Sources */,
 				BD44C13E276A8BA700CF75AB /* Items.swift in Sources */,
-				BDC97D332790BA380046DA0A /* TabbarTeacher.swift in Sources */,
+				BDC97D332790BA380046DA0A /* TabBarTeacher.swift in Sources */,
 				BD8D9299276930EC00B65AC6 /* QuestionManager.swift in Sources */,
 				BDDB53C2275EBFE9005485A0 /* SearchResultsController.swift in Sources */,
 				BD283608276F6AB40083E048 /* Constants.swift in Sources */,

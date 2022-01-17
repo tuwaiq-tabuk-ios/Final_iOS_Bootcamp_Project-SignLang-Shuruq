@@ -14,8 +14,11 @@ class ViewController: UIViewController {
                , "كاف" , "لام" , "ميم" , "نون" ,"هاء", "واو" , "ياء"]
   
   // MARK: - IBOutlet
+  
   @IBOutlet weak var tableView: UITableView!
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.

@@ -15,7 +15,8 @@ class ProfileVC: UIViewController {
   
   let db = Firestore.firestore()
   
-  
+  // MARK: - IBOutlet
+
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var fullnameTF: UITextField!
   @IBOutlet weak var EmailTF: UITextField!
@@ -31,7 +32,8 @@ class ProfileVC: UIViewController {
   var avatar = UIImage()
   let storage = Storage.storage()
   
-  
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -81,6 +83,9 @@ class ProfileVC: UIViewController {
     
   }
   
+  // MARK: - IBAction
+
+  
   @IBAction func sendProfile(_ sender: Any) {
     
     Auth.auth().currentUser?.updateEmail(to: EmailTF.text!) { [self] error in
@@ -116,6 +121,7 @@ class ProfileVC: UIViewController {
     }
   }
   
+  // MARK: - Methods 
   
   private func setupContextMenu() {
     let interaction = UIContextMenuInteraction(delegate: self)

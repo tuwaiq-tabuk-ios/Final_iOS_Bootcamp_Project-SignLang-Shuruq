@@ -13,11 +13,14 @@ class Password: UIViewController {
   let db = Firestore.firestore()
 
   // MARK: - IBOutlet
+  
   @IBOutlet weak var newPasswordTF: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   
   var Password = ""
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -40,6 +43,8 @@ if let currentUser = user {
   }
 }
 }
+  
+  // MARK: - IBAction
 
     
   @IBAction func updatePassword(_ sender: Any) {

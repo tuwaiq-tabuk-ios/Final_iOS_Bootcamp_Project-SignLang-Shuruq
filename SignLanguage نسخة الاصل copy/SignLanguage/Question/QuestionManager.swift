@@ -39,6 +39,7 @@ struct QuizManager {
              correctAnswer: "شين")]
   
   
+  // MARK: - Methods 
   mutating func checkAnswer(_ userAnswer:String) -> Bool {
     
     print(userAnswer)

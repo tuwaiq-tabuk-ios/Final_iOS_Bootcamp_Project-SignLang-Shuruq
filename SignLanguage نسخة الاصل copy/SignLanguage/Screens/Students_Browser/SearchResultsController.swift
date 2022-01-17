@@ -13,9 +13,12 @@ class SearchResultsController : UIViewController, WKUIDelegate  {
     
   let webView = WKWebView()
     
+  // MARK: - IBOutlet
 
   @IBOutlet weak var myView: UIView!
   
+  //  MARK: - View controller Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -28,6 +31,8 @@ class SearchResultsController : UIViewController, WKUIDelegate  {
       }
       webView.load(URLRequest(url: myURL))
     }
+  
+  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     webView.frame = view.bounds

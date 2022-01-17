@@ -22,6 +22,8 @@ class zoom : UIViewController, WKUIDelegate {
         view = webView
     }
   
+  //  MARK: - View controller Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
       

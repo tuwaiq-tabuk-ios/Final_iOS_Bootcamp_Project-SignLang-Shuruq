@@ -10,6 +10,8 @@ import Firebase
 
 class selectionTeacher: UITableViewCell {
   
+  // MARK: - IBOutlet
+
   @IBOutlet weak var teacherImage: UIImageView!
   @IBOutlet weak var nameTeacher: UILabel!
   @IBOutlet weak var emailLabel: UILabel!

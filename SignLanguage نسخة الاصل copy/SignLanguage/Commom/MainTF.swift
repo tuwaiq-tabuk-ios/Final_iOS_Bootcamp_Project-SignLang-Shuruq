@@ -8,6 +8,7 @@
  import UIKit
 
 @IBDesignable
+
 final  class MainTF: UITextField {
     
     // Provides left padding for images
@@ -27,9 +28,13 @@ final  class MainTF: UITextField {
     override public func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
        }
+  
+  
     override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
        }
+  
+  
     override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
        }
@@ -48,17 +53,21 @@ final  class MainTF: UITextField {
         }
     }
 
+  
     @IBInspectable var color: UIColor = UIColor.lightGray {
         didSet {
             updateView()
         }
     }
+  
+  
     @IBInspectable var borderColor: UIColor? = nil {
         didSet {
             updateView()
         }
     }
     
+  
     @IBInspectable var isPasswordTF:Bool = false {
         didSet{
             self.isSecureTextEntry = isPasswordTF
@@ -92,6 +101,7 @@ final  class MainTF: UITextField {
       let _:CGFloat = isPasswordTF ? 35:5
 
     }
+  
   
             @objc func updateTextFieldType(_ sender: UITapGestureRecognizer? = nil) {
                 // handling code

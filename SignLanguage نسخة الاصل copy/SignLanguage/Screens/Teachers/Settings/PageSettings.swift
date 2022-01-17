@@ -9,9 +9,13 @@ import UIKit
 
 class PageSettings: UIViewController {
 
+  // MARK: - IBOutlet
+
   @IBOutlet weak var appointments: UIButton!
   
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -21,6 +25,9 @@ class PageSettings: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+  // MARK: - IBAction
+  
+  
   @IBAction func appointmentsButt(_ sender: Any) {
     
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

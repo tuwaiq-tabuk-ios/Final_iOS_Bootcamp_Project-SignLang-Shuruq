@@ -12,16 +12,8 @@ class QuestionVC: UIViewController {
   var quizManager = QuizManager()
   var timer:Timer = Timer()
   
-  override func viewDidLoad() {
-        super.viewDidLoad()
+  // MARK: - IBOutlet
 
-    overrideUserInterfaceStyle = .light
-
-    configureButons()
-    startGame()
-    updateUI()
-    }
-    
   @IBOutlet weak var valueScoreLabel: UILabel!
   @IBOutlet weak var questionLabel: UILabel!
   @IBOutlet weak var questionImage: UIImageView!
@@ -31,6 +23,19 @@ class QuestionVC: UIViewController {
   @IBOutlet weak var optionFourthButton: UIButton!
   @IBOutlet weak var progressBar: UIProgressView!
 
+  //  MARK: - View controller Life Cycle
+
+  override func viewDidLoad() {
+        super.viewDidLoad()
+
+    overrideUserInterfaceStyle = .light
+
+    configureButons()
+    startGame()
+    updateUI()
+    }
+  
+  // MARK: - IBAction
 
   @IBAction func answerButtonPressed(_ sender: UIButton) {
     
@@ -98,7 +103,9 @@ func  configureButons() {
   optionFourthButton.titleLabel?.minimumScaleFactor = 0.5
 }
 
-
+// MARK: - Methods 
+  
+  
 func startGame(action: UIAlertAction! = nil){
   print(#function)
   quizManager.stopSound()

@@ -20,9 +20,15 @@ class AddStudents: UIViewController {
   let db = Firestore.firestore()
   let user = Auth.auth().currentUser
   
+  // MARK: - IBOutlet
+
   
   @IBOutlet weak var nameTF: UITextField!
   @IBOutlet weak var emailTF: UITextField!
+  
+  
+  //  MARK: - View controller Life Cycle
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,6 +40,9 @@ class AddStudents: UIViewController {
     emailTF.text = email
     
   }
+  
+  // MARK: - IBAction
+
   
   @IBAction func AddButt(_ sender: Any) {
     

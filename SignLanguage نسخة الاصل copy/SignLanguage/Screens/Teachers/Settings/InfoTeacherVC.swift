@@ -13,6 +13,8 @@ class InfoTeacherVC: UIViewController {
   
   private var UserChoseDate = ""
 
+  // MARK: - IBOutlet
+
   @IBOutlet weak var nameTF: UITextField!
   @IBOutlet weak var emailTF: UITextField!
   @IBOutlet weak var experTF: UITextField!
@@ -26,6 +28,8 @@ class InfoTeacherVC: UIViewController {
   var info = ""
   var exper = 0
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -33,9 +37,11 @@ class InfoTeacherVC: UIViewController {
 
   }
   
+  // MARK: - IBAction
+  
   @IBAction func saveButt(_ sender: Any) {
     
-    db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["fullName": fullName, "email": email,"info": info, "exper": exper])  {  err in
+    db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["fullName": fullName, "email": email,"info": info, "exper": exper, "datePicker": ("\(datePicker.date)")])  {  err in
       
           if let  err1 = err {
             print("Error updating document: \(err1)")
