@@ -25,14 +25,12 @@ struct InfoLessor {
       "email": email,
       "info": info,
       "uid": uid]
-      }
+  }
   
 }
 
 
-class TeacherViewController: UIViewController,
-                             //UISearchResultsUpdating,
-                             //UISearchBarDelegate,
+class TeacherViewController: UIViewController,UISearchBarDelegate,
                              UITableViewDelegate {
   
   
@@ -42,15 +40,15 @@ class TeacherViewController: UIViewController,
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var searchBar: UISearchBar!
-  
   let db = Firestore.firestore()
   
-  var infoLessors = [InfoLessor]()
-  let teachers: [Teacher] = []
-  var filteredTeachers: [InfoLessor]!
+  var teacherNames : [String] = [""]
+  var infoLessors: [InfoLessor] = []
+//  let teachers: [Teacher] = []
+  var filteredTeachers: [InfoLessor] = []
   var isSearching = false
   private let searchBar1 = UISearchController()
-
+  
   
   //  MARK: - View controller Life Cycle
   
@@ -59,11 +57,12 @@ class TeacherViewController: UIViewController,
     
     overrideUserInterfaceStyle = .light
     
+  
     
     tableView.delegate = self
     tableView.dataSource = self
-
-    filteredTeachers = infoLessors
+    
+   // filteredTeachers = infoLessors
     
     db.collection("Teacher").getDocuments() { (querySnapshot, error) in
       if let error = error {
@@ -76,6 +75,9 @@ class TeacherViewController: UIViewController,
           for document in querySnapshot.documents {
             let data = document.data()
             let fullName = data["fullName"] as? String ?? ""
+            
+            print("****** full Name : \(fullName) \n")
+            
             let email = data["email"] as? String ?? ""
             let info = data["info"] as? String ?? ""
             let uid = data["uid"] as? String ?? ""
@@ -89,13 +91,20 @@ class TeacherViewController: UIViewController,
             
             
             self.infoLessors.append(newUser)
+            self.teacherNames.append(newUser.fullName)
+            print("append teacher names to teacherNames array: \(self.teacherNames)")
           }
           self.tableView.reloadData()
         }
       }
     }
+    
+    getTeacherNames()
+    
+    print(" ****** \(getTeacherNames()) \n")
   }
   
+  // MARK: - Methods
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,55 +139,158 @@ class TeacherViewController: UIViewController,
       preconditionFailure("Unexpected segue identifier.")
     }
   }
- 
   
-//  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//         isSearching = true
-//     }
-//     
+  func getTeacherNames() -> [String] {
+    
+  var names =  db.collection("Teacher").getDocuments() { (querySnapshot, error) in
+      if let error = error {
+        
+        print(error.localizedDescription)
+      } else {
+        
+        if let querySnapshot = querySnapshot {
+          
+          for document in querySnapshot.documents {
+            let data = document.data()
+            let fullName = data["fullName"] as? String ?? ""
+            
+            
+            let email = data["email"] as? String ?? ""
+            let info = data["info"] as? String ?? ""
+            let uid = data["uid"] as? String ?? ""
+            
+            
+            
+            let newUser = InfoLessor(fullName: fullName,
+                                     email: email,
+                                     info: info,
+                                     uid: uid)
+            
+            self.teacherNames.append(newUser.fullName)
+          }
+        }
+        
+        
+      }
+    
+      print(" ************ Teacher Names : \(self.teacherNames)\n \n ")
+    
+    }
+    
+    // print(" ************ Teacher Names New : \(self.teacherNames)\n \n ")
+
+    return teacherNames
+
+  }
+  
+//    db.collection("Teacher").getDocuments() { (querySnapshot, error) in
+//      if let error = error {
 //
-//     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//         isSearching = false
-//     }
-//     
+//        print(error.localizedDescription)
+//      } else {
 //
-//     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//         isSearching = false
-//         searchBar.text = ""
-//         view.endEditing(true)
-//         self.tableView.reloadData()
-//     }
-//     
+//        if let querySnapshot = querySnapshot {
 //
-//     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//         if searchText == "" {
-//             isSearching = false
-//           
-//             self.tableView.reloadData()
-//         } else {
-//             isSearching = true
-//             filteredTeachers = infoLessors.filter({ item in
-//               
-//               
-//                 return infoLessors.fullName.lowercased().contains(searchText.lowercased())
-//             })
-//             self.tableView.reloadData()
+//          for document in querySnapshot.documents {
+//            let data = document.data()
+//            let fullName = data["fullName"] as? String ?? ""
+//
+//            self.teacherNames.append(fullName)
+//
+//            print(" get Teacher Names \(self.teacherNames)")
+//
+//          }
+//        }
+//        print("querySnapshot: \(String(describing: querySnapshot?.documents))")
+//
+//      }
+//
+//    }
+//    print(" get Teacher Names \(teacherNames)")
+//    return teacherNames
+    
+    
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    
+    
+//   // db.collection("Teacher").order(by: "fullName")
+//      db.collection("Teacher").whereField("fullName", contains: searchText)
+//        .addSnapshotListener { [weak self] (query, error) in
+//          // make sure you capture self weak as it may lead to memory leak
+//          guard let self = self, let documents = query?.documents else { return }
+//          // simply transform your Documents to Shops and update your dataSource
+//        //  self.shops = documents.map { Shop(from: $0) }
+//          // Reload your table view and show the result
+//          self.tableView.reloadData()
+//      }
+//    }
+//  }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//      filteredTeachers = []
+//      for post in infoLessors {
+//        let name = post.fullName.lowercased()
+//        if name.contains(searchText.lowercased()) {
+//          filteredTeachers.append(post)
+//        }
+//      }
+//    }
+//     filteredTeachers = []
+//       if searchText == ""{
+//         for post in infoLessors {
+//               filteredTeachers.append(post.fullName)
+//               }
 //         }
-//}
+//        else {
+//       for post in infoLessors {
+//         if post.fullName.lowercased().contains(searchText.lowercased()) == true {
+//           filteredTeachers.append(post.fullName)
+//         }
+//       }
 //
-//  
-//  func updateSearchResults(for searchController: UISearchController) {
-//    
-//    if !searchController.isActive {
-//        return
-//    }  }
-//  
-  
+//  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        isSearching = true
+//    }
+//
+//
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        isSearching = false
+//    }
+//
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        isSearching = false
+//        searchBar.text = ""
+//        view.endEditing(true)
+//        self.tableView.reloadData()
+//    }
+//
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText == "" {
+//            isSearching = false
+//            self.tableView.reloadData()
+//        } else {
+//            isSearching = true
+//
+//            filteredTeachers = infoLessors.filter({ item in
+//
+//
+//                return item.fullName.lowercased().contains(searchText.lowercased())
+//            })
+//            self.tableView.reloadData()
+//        }
+//    }
 }
+
 
 // MARK: - Table data source
 
 extension TeacherViewController: UITableViewDataSource {
+  
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1

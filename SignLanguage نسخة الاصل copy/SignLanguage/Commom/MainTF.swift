@@ -53,20 +53,20 @@ final  class MainTF: UITextField {
         }
     }
 
-  
+
     @IBInspectable var color: UIColor = UIColor.lightGray {
         didSet {
             updateView()
         }
     }
-  
-  
+
+
     @IBInspectable var borderColor: UIColor? = nil {
         didSet {
             updateView()
         }
     }
-    
+
   
     @IBInspectable var isPasswordTF:Bool = false {
         didSet{
@@ -77,31 +77,31 @@ final  class MainTF: UITextField {
  
     
     func setEyeView(){
-        
+
         if isPasswordTF {
             rightViewMode = UITextField.ViewMode.always
-            
+
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(systemName: "eye.fill")
-         
+
             imageView.tintColor = color
             rightView = imageView
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.updateTextFieldType(_:)))
-            imageView.isUserInteractionEnabled = true 
+            imageView.isUserInteractionEnabled = true
             imageView.addGestureRecognizer(tap)
-            
-            
-        
+
+
+
         } else {
             rightViewMode = UITextField.ViewMode.never
             rightView = nil
         }
-      
+
       let _:CGFloat = isPasswordTF ? 35:5
 
     }
-  
+
   
             @objc func updateTextFieldType(_ sender: UITapGestureRecognizer? = nil) {
                 // handling code
@@ -120,30 +120,28 @@ final  class MainTF: UITextField {
     func updateView() {
         if let image = leftImage {
             leftViewMode = UITextField.ViewMode.always
-            
+
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
-            
-          
+
+
             imageView.tintColor = color
             leftView = imageView
 
         } else {
             leftViewMode = UITextField.ViewMode.never
             leftView = nil
-            
+
         }
       let _:CGFloat = isPasswordTF ? 35:5
 
         // Placeholder text color
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: color])
-        
-        
+
+
         layer.borderColor = borderColor != nil ? borderColor?.cgColor :  color.cgColor
-        
-            
-        
+
     }
 
 }

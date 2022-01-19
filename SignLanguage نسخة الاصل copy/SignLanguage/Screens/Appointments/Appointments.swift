@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-import SwiftUI
+//import SwiftUI
 
 
 struct InfoLessores {
@@ -28,15 +28,12 @@ struct InfoLessores {
   }
 }
 
-// the best way create document new inside full Name , email , teacherId  and studentId
 
 class Appointments: UIViewController ,
-                    UITableViewDelegate,
-                    UISearchBarDelegate  {
+                    UITableViewDelegate {
   
   // MARK: - IBOutlet
   
-  @IBOutlet weak var seacherBar: UISearchBar!
   @IBOutlet weak var addButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
   
@@ -123,12 +120,12 @@ extension Appointments : UITableViewDataSource {
   
 }
 
-extension Appointments {
-  
-  func sendDate() -> String {
-      let formatter = DateFormatter()
-      formatter.dateFormat = "dd-M-YYYY"
-      let currentDate = formatter.string(from: Date())
-      return currentDate
-  }
-}
+//extension Appointments {
+//
+//  func sendDate() -> String {
+//      let formatter = DateFormatter()
+//      formatter.dateFormat = "dd-M-YYYY"
+//      let currentDate = formatter.string(from: Date())
+//      return currentDate
+//  }
+//}

@@ -67,9 +67,26 @@ class SignUpTeacherViewController: UIViewController {
             return
           }
     
+    guard let phoneNumber = phoneNumberTextField.text,
+          phoneNumber.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Enter the phone Number"
+            return
+          }
+          
+    guard let userName = userNameTextField.text,
+          userName.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Fill in the user name"
+            
+            return
+          }
+    
     FSTeacherManager.shared.signUpUserWith(email: email,
                                         password: password,
-                                        fullName: fullName) { error in
+                                        fullName: fullName,
+                                        phoneNumber: phoneNumber,
+                                        userName: userName) { error in
       if error == nil {
         // Navigation
         let storybord = UIStoryboard(name: "Main", bundle: nil)

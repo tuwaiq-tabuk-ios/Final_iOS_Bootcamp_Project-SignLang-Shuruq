@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-import SwiftUI
 
 enum FSCollectionReference: String {
   

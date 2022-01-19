@@ -70,12 +70,11 @@ class ProfileVC: UIViewController {
           self.fullnameTF.text = self.fullName
           
           
-          self.phonenumber = data["phonenumber"] as! String
+          self.phonenumber = data["phoneNumber"] as! String
           self.phoneNumberTF.text = self.phonenumber
-          
-          self.username = data["User name"] as! String
+
+          self.username = data["userName"] as! String
           self.userNameTF.text = self.username
-          
           
         }
       }
@@ -110,8 +109,9 @@ class ProfileVC: UIViewController {
     self.avatar = self.avatarImageView.image!
     
     db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["fullName" :self.fullName,
-                                                                                "phonenumber":self.phonenumber,
-                                                                                "User name":self.username ,"image":image])  {  err in
+                                                                                "phoneNumber":self.phonenumber,
+                                                                                "userName":self.username ,
+                                                                                "image":image])  {  err in
       
       if let  err1 = err {
         print("Error updating document: \(err1)")

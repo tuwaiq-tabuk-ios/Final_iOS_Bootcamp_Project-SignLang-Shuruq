@@ -104,6 +104,7 @@
 		BD7704BA2752D95C00E82623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD7704BC2752D95C00E82623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD85E4F927777EB9004F1AF6 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		BD868CB92797624C00B84A2D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		BD8D9296276930C400B65AC6 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BD8D9298276930EC00B65AC6 /* QuestionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionManager.swift; sourceTree = "<group>"; };
 		BD8D929A2769314B00B65AC6 /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		BD1768E7276FBB7A005EA887 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BDB74C632796A96600807505 /* Appointments */,
 				BD5B8A64277CD71D00BEC85C /* Personal learning */,
 				BD1768E8276FBB83005EA887 /* Teachers */,
 				BD1768E9276FBBB6005EA887 /* Students */,
@@ -178,8 +180,6 @@
 				BDDE207327676481001C440C /* LoginTeacherViewController.swift */,
 				BDDE2071276762FB001C440C /* SignUpTeacherViewController.swift */,
 				BD29E8462786D006000F38A9 /* DetalisViewController.swift */,
-				BD41D75E278A265E004B9EA0 /* Appointments.swift */,
-				BD3EF22A278CCF3400C318A4 /* AppointmentsCell.swift */,
 				BD9A51432782D30A00CDDD77 /* AddStudents.swift */,
 			);
 			path = Teachers;
@@ -189,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				BD47111D278F77C2005A4179 /* Settings */,
-				BD8E7EE12784D721009BF4A1 /* Students.swift */,
 				BD85E4F927777EB9004F1AF6 /* DetailVC.swift */,
 				BD091A5C276F286C001E2C5A /* LoginStudentViewController.swift */,
 				BD091A60276F2BC8001E2C5A /* SignUpStudentViewController.swift */,
@@ -367,9 +366,19 @@
 			path = Teachers_Students_Browser;
 			sourceTree = "<group>";
 		};
+		BDB74C632796A96600807505 /* Appointments */ = {
+			isa = PBXGroup;
+			children = (
+				BD3EF22A278CCF3400C318A4 /* AppointmentsCell.swift */,
+				BD41D75E278A265E004B9EA0 /* Appointments.swift */,
+			);
+			path = Appointments;
+			sourceTree = "<group>";
+		};
 		BDD56913278B021B00BC79E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BD8E7EE12784D721009BF4A1 /* Students.swift */,
 				BD4E3B4A278379AE00E2442B /* Teacher.swift */,
 				BD163904277B947C007566B8 /* CellTableViewCell.swift */,
 			);
@@ -432,6 +441,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = BD7704A22752D95B00E82623;
 			packageReferences = (
@@ -525,6 +535,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BD7704B52752D95C00E82623 /* Base */,
+				BD868CB92797624C00B84A2D /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -544,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -605,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
