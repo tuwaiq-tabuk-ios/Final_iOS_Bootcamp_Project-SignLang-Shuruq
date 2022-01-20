@@ -9,69 +9,66 @@ import UIKit
 import Firebase
 
 class DetalisViewController: UIViewController {
-
+  
   var selectionCell : selectionTeacher!
   let db = Firestore.firestore()
-
+  
+  // MARK: - IBOutlet
+  
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var emailLabel: UILabel!
   @IBOutlet weak var picture: UIImageView!
+  @IBOutlet weak var dateAndTime: UIDatePicker!
   @IBOutlet weak var reservationButt: UIButton!
   
-  
-    
   
   var fullName: String = ""
   var email: String = ""
   var uid: String = ""
   var info : String = ""
   
+  //  MARK: - View controller Life Cycle
+  
   override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
     
     overrideUserInterfaceStyle = .light
-
+    
     
     print("\n\n***The fullName in DetailsViewController: \(fullName)\n\n")
     print("\n\n***The email in DetailsViewController: \(email)\n\n")
     
     nameLabel.text = fullName
     emailLabel.text = email
-   print("\n\n \n *******\(uid)\n \n \n ")
     
-   
-
+    print("\n\n \n *******\(uid)\n \n \n ")
+    
+    
+    
   }
+  
+  // MARK: - IBAction
   
   @IBAction func reservationButt(_ sender: Any) {
     
     
-    let fullName = nameLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    let email = emailLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    
-    
     let user = Auth.auth().currentUser
-        
-   // print("\(String(describing: user?.uid))")
+    
+    // print("\(String(describing: user?.uid))")
     
     print("**************\(String(describing: user?.providerData))")
+    _ = UUID().uuidString
     
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd-M-YYYY"
     
-    db.collection("Appointments").addDocument(data: ["fullName":fullName,
-                                                     "email":user?.email,
+    let strDate = formatter.string(from: dateAndTime.date)
+    
+    db.collection("Appointments").addDocument(data: ["email": user?.email as Any,
                                                      "studentId": user!.uid,
-                                                     "TeacherId": uid])
-
-
-    }
+                                                     "TeacherId": uid,
+                                                     "datePicker" : strDate])
   }
-
-//    let reservation = self.storyboard?.instantiateViewController(identifier: K.Storyboard.appointments) as? InfopersonalVC
-//    
-//    self.view.window?.rootViewController = reservation
-//    self.view.window?.makeKeyAndVisible()
-//    
-//  }
-
   
+}
 

@@ -11,8 +11,7 @@ import UIKit
 
 struct Students {
   
-  var firstname: String
-  var lastname: String
+  var fullName: String
   var email: String
   var password: String
   var images: UIImage

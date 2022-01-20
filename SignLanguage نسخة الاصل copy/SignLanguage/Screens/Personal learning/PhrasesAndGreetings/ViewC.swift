@@ -13,8 +13,11 @@ class ViewC: UIViewController {
   
   // MARK: - IBOutlet
 
-  
   @IBOutlet weak var tableView: UITableView!
+  
+  
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
 

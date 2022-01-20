@@ -9,8 +9,10 @@ import UIKit
 
 class AppointmentsCell: UITableViewCell {
 
-  
+  // MARK: - IBOutlet
+
   @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var dateAndTime: UILabel!
   
   override func awakeFromNib() {
         super.awakeFromNib()

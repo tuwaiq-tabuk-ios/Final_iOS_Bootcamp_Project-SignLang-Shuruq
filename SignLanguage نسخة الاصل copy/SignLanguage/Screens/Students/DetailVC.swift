@@ -15,6 +15,9 @@ class DetailVC: UIViewController {
   
   var descriptionText: String = ""
   
+  
+  //  MARK: - View controller Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

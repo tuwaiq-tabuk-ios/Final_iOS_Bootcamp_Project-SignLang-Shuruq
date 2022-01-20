@@ -12,8 +12,12 @@ class NumberViewController: UIViewController {
   let numbers = [ "١", "٢" , "٣", "٤", "٥" , "٦" , "٧" , "٨" , "٩" ,"١٠" , "١١" , "١٢" , "١٣" , "١٤" , "١٥" , "١٦"  , "١٧" , "١٨" , "١٩", "٢٠" , "٢١" , "٢٢" , "٣٠" , "١٠٠"]
   
   // MARK: - IBOutlet
+  
   @IBOutlet weak var tableView: UITableView!
   
+  
+  //  MARK: - View controller Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

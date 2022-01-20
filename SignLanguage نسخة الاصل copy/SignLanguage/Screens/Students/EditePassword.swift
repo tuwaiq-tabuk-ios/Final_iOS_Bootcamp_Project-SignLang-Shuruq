@@ -20,6 +20,8 @@ class EditePassword: UIViewController {
   
   var  Password = ""
   
+  //  MARK: - View controller Life Cycle
+
   override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -45,6 +47,8 @@ class EditePassword: UIViewController {
     }
   }
     
+  // MARK: - IBAction
+
   @IBAction func savePassword(_ sender: Any) {
     
     Auth.auth().currentUser?.updatePassword(to: editePasswordTF.text!) { [self] error in
