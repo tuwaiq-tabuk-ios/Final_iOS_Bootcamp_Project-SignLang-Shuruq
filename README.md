@@ -26,10 +26,11 @@ Family of people with deaf disability and anyone interested in learning the sign
    - Add motivational notices on some screens
    - It contains a private file for the user
 
-https://user-images.githubusercontent.com/91871792/150527802-fb2f9985-5d1e-451d-a6e8-a8c99accb126.mp4
-
-
 
 
 https://user-images.githubusercontent.com/91871792/150527830-53b80213-63e4-488d-9871-76f65a877912.mp4
+
+
+
+https://user-images.githubusercontent.com/91871792/150527956-9d2df689-e411-429c-b529-90e0263f935d.mp4
 
