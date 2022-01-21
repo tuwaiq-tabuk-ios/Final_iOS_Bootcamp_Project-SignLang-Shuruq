@@ -9,8 +9,9 @@
 
 @IBDesignable
 
-final  class MainTF: UITextField {
+final  class CMTextField: UITextField {
     
+  
     // Provides left padding for images
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
       let textRect = super.leftViewRect(forBounds: bounds)

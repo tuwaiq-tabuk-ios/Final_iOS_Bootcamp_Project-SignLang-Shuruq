@@ -7,13 +7,16 @@
 
 import UIKit
 
-struct Teacher {
+
+struct Teacher  {
   
+  // MARK: - ProPerties
+
   var fullName: String
   var info : String
   var exper: Int
   var email: String
-  var images: UIImage?
+  var imagesURL = UIImage()
   var phoneNumber: String
   var userName: String
   

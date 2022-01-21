@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD013E8C27955B38006E2163 /* FSCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD013E8B27955B38006E2163 /* FSCollectionReference.swift */; };
 		BD013E8E27955F10006E2163 /* FSTeacherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD013E8D27955F10006E2163 /* FSTeacherManager.swift */; };
-		BD073A3E277877E600F6BA6D /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD073A3D277877E600F6BA6D /* AvatarImageView.swift */; };
 		BD091A5D276F286C001E2C5A /* LoginStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD091A5C276F286C001E2C5A /* LoginStudentViewController.swift */; };
 		BD091A5F276F2960001E2C5A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD091A5E276F2960001E2C5A /* Utilities.swift */; };
 		BD091A61276F2BC8001E2C5A /* SignUpStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD091A60276F2BC8001E2C5A /* SignUpStudentViewController.swift */; };
@@ -26,6 +25,7 @@
 		BD283608276F6AB40083E048 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD283607276F6AB40083E048 /* Constants.swift */; };
 		BD29E8472786D006000F38A9 /* DetalisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD29E8462786D006000F38A9 /* DetalisViewController.swift */; };
 		BD364396278EF0A7005B1D4B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BD364395278EF0A7005B1D4B /* FirebaseStorage */; };
+		BD3919C427995B4300A20D6B /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = BD3919C327995B4300A20D6B /* FirebaseFirestoreSwift-Beta */; };
 		BD3EF22B278CCF3500C318A4 /* AppointmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3EF22A278CCF3400C318A4 /* AppointmentsCell.swift */; };
 		BD41D75F278A265E004B9EA0 /* Appointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD41D75E278A265E004B9EA0 /* Appointments.swift */; };
 		BD441B9F27705E0D0052BA30 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD441B9E27705E0D0052BA30 /* TabBarViewController.swift */; };
@@ -37,7 +37,7 @@
 		BD5B8A6B277CE1DD00BEC85C /* DetailWeekdaysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5B8A6A277CE1DD00BEC85C /* DetailWeekdaysVC.swift */; };
 		BD5B8A6D277CEF7600BEC85C /* PhrasesAndGreetingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5B8A6C277CEF7600BEC85C /* PhrasesAndGreetingsVC.swift */; };
 		BD6BC5872764166E00FCE451 /* Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6BC5862764166E00FCE451 /* Zoom.swift */; };
-		BD719EED2778DBE600190DBC /* MainTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD719EEC2778DBE600190DBC /* MainTF.swift */; };
+		BD719EED2778DBE600190DBC /* CMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD719EEC2778DBE600190DBC /* CMTextField.swift */; };
 		BD7704AF2752D95C00E82623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7704AE2752D95C00E82623 /* AppDelegate.swift */; };
 		BD7704B12752D95C00E82623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7704B02752D95C00E82623 /* SceneDelegate.swift */; };
 		BD7704B32752D95C00E82623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7704B22752D95C00E82623 /* ViewController.swift */; };
@@ -69,7 +69,6 @@
 /* Begin PBXFileReference section */
 		BD013E8B27955B38006E2163 /* FSCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCollectionReference.swift; sourceTree = "<group>"; };
 		BD013E8D27955F10006E2163 /* FSTeacherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTeacherManager.swift; sourceTree = "<group>"; };
-		BD073A3D277877E600F6BA6D /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		BD091A5C276F286C001E2C5A /* LoginStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStudentViewController.swift; sourceTree = "<group>"; };
 		BD091A5E276F2960001E2C5A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BD091A60276F2BC8001E2C5A /* SignUpStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStudentViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +93,7 @@
 		BD5B8A6A277CE1DD00BEC85C /* DetailWeekdaysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeekdaysVC.swift; sourceTree = "<group>"; };
 		BD5B8A6C277CEF7600BEC85C /* PhrasesAndGreetingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhrasesAndGreetingsVC.swift; sourceTree = "<group>"; };
 		BD6BC5862764166E00FCE451 /* Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zoom.swift; sourceTree = "<group>"; };
-		BD719EEC2778DBE600190DBC /* MainTF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTF.swift; sourceTree = "<group>"; };
+		BD719EEC2778DBE600190DBC /* CMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTextField.swift; sourceTree = "<group>"; };
 		BD7704AB2752D95C00E82623 /* SignLanguage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignLanguage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7704AE2752D95C00E82623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD7704B02752D95C00E82623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD091A66276F4C48001E2C5A /* FirebaseAuth in Frameworks */,
+				BD3919C427995B4300A20D6B /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				BD091A68276F4C48001E2C5A /* FirebaseFirestore in Frameworks */,
 				BD364396278EF0A7005B1D4B /* FirebaseStorage in Frameworks */,
 			);
@@ -238,11 +238,10 @@
 			isa = PBXGroup;
 			children = (
 				BD283607276F6AB40083E048 /* Constants.swift */,
-				BD719EEC2778DBE600190DBC /* MainTF.swift */,
+				BD719EEC2778DBE600190DBC /* CMTextField.swift */,
 				BD091A5E276F2960001E2C5A /* Utilities.swift */,
 				BD441B9E27705E0D0052BA30 /* TabBarViewController.swift */,
 				BD178A392779A6CB00145B80 /* UIView+Extension.swift */,
-				BD073A3D277877E600F6BA6D /* AvatarImageView.swift */,
 			);
 			path = Commom;
 			sourceTree = "<group>";
@@ -414,6 +413,7 @@
 				BD091A65276F4C48001E2C5A /* FirebaseAuth */,
 				BD091A67276F4C48001E2C5A /* FirebaseFirestore */,
 				BD364395278EF0A7005B1D4B /* FirebaseStorage */,
+				BD3919C327995B4300A20D6B /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = SignLanguage;
 			productReference = BD7704AB2752D95C00E82623 /* SignLanguage.app */;
@@ -505,7 +505,7 @@
 				BD013E8C27955B38006E2163 /* FSCollectionReference.swift in Sources */,
 				BDBE96E62795C66E00F09E8F /* FSStudentManger.swift in Sources */,
 				BD091A5D276F286C001E2C5A /* LoginStudentViewController.swift in Sources */,
-				BD719EED2778DBE600190DBC /* MainTF.swift in Sources */,
+				BD719EED2778DBE600190DBC /* CMTextField.swift in Sources */,
 				BD7704B12752D95C00E82623 /* SceneDelegate.swift in Sources */,
 				BD4E3B4D27837FED00E2442B /* ProfileVC.swift in Sources */,
 				BD4E3B4F27838C6D00E2442B /* Password.swift in Sources */,
@@ -518,7 +518,6 @@
 				BD5B8A6D277CEF7600BEC85C /* PhrasesAndGreetingsVC.swift in Sources */,
 				BD29E8472786D006000F38A9 /* DetalisViewController.swift in Sources */,
 				BD9A51442782D30A00CDDD77 /* AddStudents.swift in Sources */,
-				BD073A3E277877E600F6BA6D /* AvatarImageView.swift in Sources */,
 				BD6BC5872764166E00FCE451 /* Zoom.swift in Sources */,
 				BD44C13E276A8BA700CF75AB /* Items.swift in Sources */,
 				BDC97D332790BA380046DA0A /* TabBarTeacher.swift in Sources */,
@@ -776,6 +775,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD091A64276F4C48001E2C5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		BD3919C327995B4300A20D6B /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD091A64276F4C48001E2C5A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

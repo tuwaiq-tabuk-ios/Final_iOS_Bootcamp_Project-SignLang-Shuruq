@@ -11,6 +11,8 @@ import AVFoundation
 
 struct QuizManager {
   
+  // MARK: - ProPerties
+
   var player: AVAudioPlayer?
   var playerErrors : AVAudioPlayer?
   

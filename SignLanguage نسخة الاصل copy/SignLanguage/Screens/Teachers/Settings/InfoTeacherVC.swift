@@ -11,7 +11,6 @@ import FirebaseFirestore
 
 class InfoTeacherVC: UIViewController {
   
-  private var UserChoseDate = ""
 
   // MARK: - IBOutlet
 
@@ -21,6 +20,8 @@ class InfoTeacherVC: UIViewController {
   @IBOutlet weak var infoTF: UITextField!
   @IBOutlet weak var datePicker: UIDatePicker!
   
+  // MARK: - ProPerties
+
   let db = Firestore.firestore()
   
  var fullName = ""

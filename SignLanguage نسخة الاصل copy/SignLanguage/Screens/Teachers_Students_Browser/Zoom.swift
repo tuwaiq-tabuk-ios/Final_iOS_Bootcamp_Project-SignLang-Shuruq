@@ -13,6 +13,8 @@ import WebKit
 
 class zoom : UIViewController, WKUIDelegate {
     
+  // MARK: - ProPerties
+
     var webView: WKWebView!
     
     override func loadView() {

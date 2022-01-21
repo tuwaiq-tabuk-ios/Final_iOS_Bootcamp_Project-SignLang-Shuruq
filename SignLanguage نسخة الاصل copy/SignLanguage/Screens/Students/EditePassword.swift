@@ -12,14 +12,16 @@ import CoreMedia
 
 class EditePassword: UIViewController {
   
-  let db = Firestore.firestore()
 
   // MARK: - IBOutlet
   @IBOutlet weak var editePasswordTF: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   
+  // MARK: - ProPerties
+
   var  Password = ""
-  
+  let db = Firestore.firestore()
+
   //  MARK: - View controller Life Cycle
 
   override func viewDidLoad() {

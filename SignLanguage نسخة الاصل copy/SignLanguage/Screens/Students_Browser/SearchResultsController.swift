@@ -10,7 +10,10 @@ import WebKit
 
 
 class SearchResultsController : UIViewController, WKUIDelegate  {
-    
+   
+  
+  // MARK: - ProPerties
+
   let webView = WKWebView()
     
   // MARK: - IBOutlet

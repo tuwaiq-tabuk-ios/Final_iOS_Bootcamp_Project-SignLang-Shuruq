@@ -11,6 +11,9 @@ import UIKit
 
 struct Students {
   
+  
+  // MARK: - ProPerties
+
   var fullName: String
   var email: String
   var password: String

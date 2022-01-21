@@ -37,6 +37,8 @@ class Appointments: UIViewController ,
   @IBOutlet weak var addButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
   
+  // MARK: - ProPerties
+
   let db = Firestore.firestore()
   let user = Auth.auth().currentUser
   var infoStudent = [InfoLessores]()

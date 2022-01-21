@@ -14,6 +14,8 @@ class DetailWeekdaysVC: UIViewController {
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   
+  // MARK: - ProPerties
+
   var image = UIImage()
   var name = ""
   

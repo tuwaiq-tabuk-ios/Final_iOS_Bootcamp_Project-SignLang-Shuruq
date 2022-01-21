@@ -14,6 +14,8 @@ class FSTeacherManager {
   
   private init() {}
   
+  // MARK: - ProPerties
+
   private var email: String = ""
   private var pasword: String = ""
   private var fullName: String = ""
@@ -21,6 +23,7 @@ class FSTeacherManager {
   private var userName: String = ""
   
   // MARK: - Register
+  
   func signUpUserWith(
     email: String,
     password: String,

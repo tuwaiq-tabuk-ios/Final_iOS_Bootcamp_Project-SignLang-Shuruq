@@ -12,15 +12,17 @@ import CoreMedia
 
 class EditeProfile: UIViewController {
   
-  let db = Firestore.firestore()
   
   // MARK: - IBOutlet
   
   @IBOutlet weak var fullNameTF: UITextField!
   @IBOutlet weak var emailTF: UITextField!
   
+  // MARK: - ProPerties
+
   var fullName = "nil"
   var email = "nil"
+  let db = Firestore.firestore()
   
   //  MARK: - View controller Life Cycle
   

@@ -10,14 +10,19 @@ import Firebase
 import FirebaseFirestore
 
 class Password: UIViewController {
+  
+  
+  // MARK: - ProPerties
+
   let db = Firestore.firestore()
+  var Password = ""
 
   // MARK: - IBOutlet
   
   @IBOutlet weak var newPasswordTF: UITextField!
   @IBOutlet weak var saveButton: UIButton!
   
-  var Password = ""
+ 
   
   //  MARK: - View controller Life Cycle
 

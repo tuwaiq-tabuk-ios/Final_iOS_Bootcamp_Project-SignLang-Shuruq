@@ -18,8 +18,8 @@ class SignUpTeacherViewController: UIViewController {
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var phoneNumberTextField: UITextField!
   @IBOutlet weak var userNameTextField: UITextField!
-  @IBOutlet weak var passwordTextField: MainTF!
-  @IBOutlet weak var confirmPassword: MainTF!
+  @IBOutlet weak var passwordTextField: CMTextField!
+  @IBOutlet weak var confirmPassword: CMTextField!
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
@@ -104,8 +104,6 @@ class SignUpTeacherViewController: UIViewController {
 
   func setUpElements() {
     
-    // Hide the error label
-  //  errorLabel.alpha = 0
     
     // Style the elements
     Utilities.styleTextField(fullNameTextField)

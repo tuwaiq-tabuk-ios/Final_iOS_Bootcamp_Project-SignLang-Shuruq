@@ -9,6 +9,8 @@ import UIKit
 
 class NumberViewController: UIViewController {
 
+  // MARK: - ProPerties
+
   let numbers = [ "١", "٢" , "٣", "٤", "٥" , "٦" , "٧" , "٨" , "٩" ,"١٠" , "١١" , "١٢" , "١٣" , "١٤" , "١٥" , "١٦"  , "١٧" , "١٨" , "١٩", "٢٠" , "٢١" , "٢٢" , "٣٠" , "١٠٠"]
   
   // MARK: - IBOutlet

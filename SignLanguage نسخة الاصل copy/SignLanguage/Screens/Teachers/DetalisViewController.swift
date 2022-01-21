@@ -10,8 +10,6 @@ import Firebase
 
 class DetalisViewController: UIViewController {
   
-  var selectionCell : selectionTeacher!
-  let db = Firestore.firestore()
   
   // MARK: - IBOutlet
   
@@ -21,7 +19,9 @@ class DetalisViewController: UIViewController {
   @IBOutlet weak var dateAndTime: UIDatePicker!
   @IBOutlet weak var reservationButt: UIButton!
   
-  
+  // MARK: - ProPerties
+
+  let db = Firestore.firestore()
   var fullName: String = ""
   var email: String = ""
   var uid: String = ""

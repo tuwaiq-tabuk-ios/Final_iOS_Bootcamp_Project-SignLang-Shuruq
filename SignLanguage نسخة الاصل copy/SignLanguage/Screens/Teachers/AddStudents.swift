@@ -12,11 +12,12 @@ import FirebaseFirestore
 
 class AddStudents: UIViewController {
   
+  // MARK: - ProPerties
+
   var fullName: String = ""
   var email: String = ""
   var uid: String = ""
   var info : String = ""
-  
   let db = Firestore.firestore()
   let user = Auth.auth().currentUser
   

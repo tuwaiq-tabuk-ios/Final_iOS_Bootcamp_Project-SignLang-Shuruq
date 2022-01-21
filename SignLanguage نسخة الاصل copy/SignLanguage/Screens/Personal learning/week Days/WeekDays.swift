@@ -8,6 +8,9 @@
 import UIKit
 
 class WeekDays: UIViewController {
+  
+  // MARK: - ProPerties
+
 
  let weeks = ["الاحد","الاثنين", "الثلاثاء", "الاربعاء", "الخميس", "الجمعة", "السبت"]
   

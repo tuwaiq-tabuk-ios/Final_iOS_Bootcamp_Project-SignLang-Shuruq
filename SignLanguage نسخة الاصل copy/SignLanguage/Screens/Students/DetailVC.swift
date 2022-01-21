@@ -13,6 +13,8 @@ class DetailVC: UIViewController {
 
   @IBOutlet weak var descriptionLabel: UITextField!
   
+  // MARK: - ProPerties
+
   var descriptionText: String = ""
   
   

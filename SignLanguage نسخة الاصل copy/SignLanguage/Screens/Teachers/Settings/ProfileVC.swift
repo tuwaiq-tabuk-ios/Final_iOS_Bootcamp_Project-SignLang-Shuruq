@@ -13,54 +13,57 @@ import FirebaseStorage
 
 class ProfileVC: UIViewController {
   
-  let db = Firestore.firestore()
   
   // MARK: - IBOutlet
-
+  
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var fullnameTF: UITextField!
   @IBOutlet weak var EmailTF: UITextField!
   @IBOutlet weak var phoneNumberTF: UITextField!
   @IBOutlet weak var userNameTF: UITextField!
   
+  
+  //MARK: - Properties
+  
+  
+  let db = Firestore.firestore()
   var fullName = "fullName"
   var email = "nil"
   var phonenumber = "phoneNumber"
   var username = "User name"
-  var image = "image"
-  
   var avatar = UIImage()
-  let storage = Storage.storage()
+  let storages = Storage.storage()
+  let storage = Storage.storage().reference()
+  
+  let user = Auth.auth().currentUser
   
   //  MARK: - View controller Life Cycle
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     overrideUserInterfaceStyle = .light
-
     
-    // Do any additional setup after loading the view.
     avatarImageView.layer.masksToBounds = false
     avatarImageView.layer.cornerRadius = avatarImageView.frame.height/2
     avatarImageView.clipsToBounds = true
     avatarImageView.tintColor = .systemGray5
     
     loadImage()
-    setDefaultAvatar()
-    setupContextMenu()
-    
-    
+  
     let user = Auth.auth().currentUser
     print("\n\n\n****** THE CURRENT USER ID:: \(String(describing: user?.uid))")
     
     if let currentUser = user {
+      
       db.collection("Teacher").document(currentUser.uid).getDocument { doc, err in
         if err != nil {
           print("\n\n\n**** AN ERROR OCUURED:: \(String(describing: err))")
         } else {
           let data = doc!.data()!
           print("\n\n\n****** THE DATA::\(data)")
+          
+          print("****************** user uid : \(String(describing: user?.uid))")
           
           
           self.email = (user?.email)!
@@ -69,23 +72,29 @@ class ProfileVC: UIViewController {
           self.fullName = data["fullName"] as! String
           self.fullnameTF.text = self.fullName
           
+          print("DEBUG: ************* Full Name : \(self.fullName)")
+          
           
           self.phonenumber = data["phoneNumber"] as! String
           self.phoneNumberTF.text = self.phonenumber
-
+          print("DEBUG: ************* phonenumber : \(self.phonenumber)")
+          
+          
           self.username = data["userName"] as! String
           self.userNameTF.text = self.username
+          print("DEBUG: ************* username : \(self.username)")
           
         }
       }
     }
-    
   }
   
   // MARK: - IBAction
-
   
-  @IBAction func sendProfile(_ sender: Any) {
+  
+  @IBAction func sendProfile(_ sender: UIButton) {
+    
+    let dataInfo:DocumentReference? = nil
     
     Auth.auth().currentUser?.updateEmail(to: EmailTF.text!) { [self] error in
       if error == nil{
@@ -110,43 +119,46 @@ class ProfileVC: UIViewController {
     
     db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["fullName" :self.fullName,
                                                                                 "phoneNumber":self.phonenumber,
-                                                                                "userName":self.username ,
-                                                                                "image":image])  {  err in
+                                                                                "userName":self.username]) {  err in
       
-      if let  err1 = err {
-        print("Error updating document: \(err1)")
-      } else {
-        print("Document successfully updated")
+      if let err = err {
+        print(err)
+      }
+      
+      else {
+        guard let imagData = self.avatarImageView?.image?.pngData() else {
+          return
+        }
+        
+        _ = dataInfo?.documentID
+        
+        self.storage.child("imagesAD/\(String(describing: self.avatarImageView)).png").putData(imagData,
+                                                                                               metadata: nil,
+                                                                                               completion: { _, error in
+          
+          guard error == nil else {
+            print ("Fieled")
+            return
+          }
+          
+          
+        })
       }
     }
   }
   
-  // MARK: - Methods 
   
-  private func setupContextMenu() {
-    let interaction = UIContextMenuInteraction(delegate: self)
-    avatarImageView.isUserInteractionEnabled = true
-    avatarImageView.addInteraction(interaction)
+  @IBAction func addphotoButton(_ sender: UIButton) {
+    presentPhotoActionSheet()
+    
   }
   
-  
-  private func selectAvatar(){
-    let imagePicker = UIImagePickerController()
-    imagePicker.allowsEditing = true
-    imagePicker.delegate = self
-    present(imagePicker, animated: true, completion: nil)
-  }
-  
-  
-  private func setDefaultAvatar() {
-    avatarImageView.image = UIImage(named: "User Circle")
-  }
-  
+  // MARK: - Methods
   
   func loadImage() {
     let user = Auth.auth().currentUser
-    guard let  currentUser  = user  else{return}
-    let pathReference = storage.reference(withPath: "profile image/\(currentUser.uid).png")
+    guard user != nil  else{return}
+    let pathReference = storages.reference(withPath: "imagesAD/\(String(describing: avatarImageView)).png")
     pathReference.getData(maxSize: 1000 * 1024 * 1024) { data, error in
       if let error = error {
         // Uh-oh, an error occurred!
@@ -161,48 +173,57 @@ class ProfileVC: UIViewController {
   
 }
 
-extension ProfileVC : UIContextMenuInteractionDelegate {
-  
-  func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                              previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) ->
-  UITargetedPreview? {
-    let params = UIPreviewParameters()
-    params.backgroundColor = .clear
-    let preview = UITargetedPreview(view: avatarImageView, parameters: params)
-    return preview
-  }
-  
-  func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-    
-    guard interaction.view === avatarImageView else { return nil }
-    
-    return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (suggestedActions) -> UIMenu? in
-      let chooseAvatar = UIAction(title: "Choose Avatar", image: UIImage(systemName: "pencil"), identifier:
-                                    nil) { _ in
-        self.selectAvatar()
-      }
-      
-      let removeAvatar = UIAction(title: "Remove", image: UIImage(systemName: "trash"), identifier: nil,
-                                  attributes: [.destructive]) { _ in
-        self.setDefaultAvatar()
-      }
-      return UIMenu(title: "Avatar", image: nil, identifier: nil, options: [], children: [
-        chooseAvatar,removeAvatar
-      ])
-    }
-  }
-  
-}
 
 extension ProfileVC :UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
   
-  private func imagePickerControllerDidCancel(_picker:UIImagePickerController) {
-    dismiss(animated: true, completion: nil)
+  func presentPhotoActionSheet(){
+    
+    let actionSheet = UIAlertController(
+      title: "Advertising Picture",
+      message: "How would you like to select a picture",
+      preferredStyle: .actionSheet)
+    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self] _ in
+      self?.presenCamera()
+    } ))
+    actionSheet.addAction(UIAlertAction(title: "Chose Photo", style: .default, handler: {[weak self ] _ in
+      self?.presentPhotoPicker()
+    }))
+    present(actionSheet , animated: true)
   }
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    if let image = (info[.editedImage] ?? info[.originalImage]) as? UIImage {
-      avatarImageView.image = image
-    }
-    dismiss(animated: true , completion: nil)
+  
+  func presenCamera (){
+    let addImge = UIImagePickerController()
+    addImge.sourceType = .camera
+    addImge.delegate = self
+    addImge.allowsEditing = true
+    present(addImge, animated: true)
+  }
+  
+  
+  func presentPhotoPicker(){
+    let addImge = UIImagePickerController()
+    addImge.sourceType = .photoLibrary
+    addImge.delegate = self
+    addImge.allowsEditing = true
+    present(addImge, animated: true)
+  }
+  
+  
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info:
+                             [UIImagePickerController.InfoKey : Any]) {
+    
+    picker.dismiss(animated: true, completion: nil)
+    guard let selectedImage =
+            info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+              return
+            }
+    self.avatarImageView.image  = selectedImage
+  }
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
   }
 }
+
+

@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-import CoreAudio
+
 
 struct InfoLessor {
   var fullName: String
@@ -30,7 +30,7 @@ struct InfoLessor {
 }
 
 
-class TeacherViewController: UIViewController,UISearchBarDelegate,
+class TeacherViewController: UIViewController,
                              UITableViewDelegate {
   
   
@@ -39,12 +39,13 @@ class TeacherViewController: UIViewController,UISearchBarDelegate,
   // MARK: - IBOutlet
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var searchBar: UISearchBar!
-  let db = Firestore.firestore()
   
+  
+// MARK: - ProPerties
+  
+  let db = Firestore.firestore()
   var teacherNames : [String] = [""]
   var infoLessors: [InfoLessor] = []
-//  let teachers: [Teacher] = []
   var filteredTeachers: [InfoLessor] = []
   var isSearching = false
   private let searchBar1 = UISearchController()
@@ -57,12 +58,10 @@ class TeacherViewController: UIViewController,UISearchBarDelegate,
     
     overrideUserInterfaceStyle = .light
     
-  
+    searchLayout()
     
     tableView.delegate = self
     tableView.dataSource = self
-    
-   // filteredTeachers = infoLessors
     
     db.collection("Teacher").getDocuments() { (querySnapshot, error) in
       if let error = error {
@@ -98,13 +97,27 @@ class TeacherViewController: UIViewController,UISearchBarDelegate,
         }
       }
     }
-    
-    getTeacherNames()
-    
-    print(" ****** \(getTeacherNames()) \n")
   }
   
   // MARK: - Methods
+  
+  func searchLayout() {
+    
+    searchBar1.loadViewIfNeeded()
+    searchBar1.searchResultsUpdater = self
+    searchBar1.obscuresBackgroundDuringPresentation                          = false
+    searchBar1.searchBar.returnKeyType                                       = .done
+    searchBar1.searchBar.sizeToFit()
+    searchBar1.searchBar.placeholder = "Search for a Teacher"
+    searchBar1.hidesNavigationBarDuringPresentation                          = false
+    definesPresentationContext                                              = true
+    
+    navigationItem.searchController                                         = searchBar1
+    navigationItem.hidesSearchBarWhenScrolling                              = false
+    searchBar1.searchBar.delegate                                            = self
+    
+  }
+  
   
   func tableView(_ tableView: UITableView,
                  heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,152 +153,7 @@ class TeacherViewController: UIViewController,UISearchBarDelegate,
     }
   }
   
-  func getTeacherNames() -> [String] {
-    
-  var names =  db.collection("Teacher").getDocuments() { (querySnapshot, error) in
-      if let error = error {
-        
-        print(error.localizedDescription)
-      } else {
-        
-        if let querySnapshot = querySnapshot {
-          
-          for document in querySnapshot.documents {
-            let data = document.data()
-            let fullName = data["fullName"] as? String ?? ""
-            
-            
-            let email = data["email"] as? String ?? ""
-            let info = data["info"] as? String ?? ""
-            let uid = data["uid"] as? String ?? ""
-            
-            
-            
-            let newUser = InfoLessor(fullName: fullName,
-                                     email: email,
-                                     info: info,
-                                     uid: uid)
-            
-            self.teacherNames.append(newUser.fullName)
-          }
-        }
-        
-        
-      }
-    
-      print(" ************ Teacher Names : \(self.teacherNames)\n \n ")
-    
-    }
-    
-    // print(" ************ Teacher Names New : \(self.teacherNames)\n \n ")
-
-    return teacherNames
-
-  }
-  
-//    db.collection("Teacher").getDocuments() { (querySnapshot, error) in
-//      if let error = error {
-//
-//        print(error.localizedDescription)
-//      } else {
-//
-//        if let querySnapshot = querySnapshot {
-//
-//          for document in querySnapshot.documents {
-//            let data = document.data()
-//            let fullName = data["fullName"] as? String ?? ""
-//
-//            self.teacherNames.append(fullName)
-//
-//            print(" get Teacher Names \(self.teacherNames)")
-//
-//          }
-//        }
-//        print("querySnapshot: \(String(describing: querySnapshot?.documents))")
-//
-//      }
-//
-//    }
-//    print(" get Teacher Names \(teacherNames)")
-//    return teacherNames
-    
-    
-  }
-  
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-    
-    
-//   // db.collection("Teacher").order(by: "fullName")
-//      db.collection("Teacher").whereField("fullName", contains: searchText)
-//        .addSnapshotListener { [weak self] (query, error) in
-//          // make sure you capture self weak as it may lead to memory leak
-//          guard let self = self, let documents = query?.documents else { return }
-//          // simply transform your Documents to Shops and update your dataSource
-//        //  self.shops = documents.map { Shop(from: $0) }
-//          // Reload your table view and show the result
-//          self.tableView.reloadData()
-//      }
-//    }
-//  }
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//      filteredTeachers = []
-//      for post in infoLessors {
-//        let name = post.fullName.lowercased()
-//        if name.contains(searchText.lowercased()) {
-//          filteredTeachers.append(post)
-//        }
-//      }
-//    }
-//     filteredTeachers = []
-//       if searchText == ""{
-//         for post in infoLessors {
-//               filteredTeachers.append(post.fullName)
-//               }
-//         }
-//        else {
-//       for post in infoLessors {
-//         if post.fullName.lowercased().contains(searchText.lowercased()) == true {
-//           filteredTeachers.append(post.fullName)
-//         }
-//       }
-//
-//  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        isSearching = true
-//    }
-//
-//
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        isSearching = false
-//    }
-//
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        isSearching = false
-//        searchBar.text = ""
-//        view.endEditing(true)
-//        self.tableView.reloadData()
-//    }
-//
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText == "" {
-//            isSearching = false
-//            self.tableView.reloadData()
-//        } else {
-//            isSearching = true
-//
-//            filteredTeachers = infoLessors.filter({ item in
-//
-//
-//                return item.fullName.lowercased().contains(searchText.lowercased())
-//            })
-//            self.tableView.reloadData()
-//        }
-//    }
 }
-
 
 // MARK: - Table data source
 
@@ -299,7 +167,15 @@ extension TeacherViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView,
                  numberOfRowsInSection section: Int) -> Int {
-    return infoLessors.count
+    
+    if searchBar1.isActive && !searchBar1.searchBar.text!.isEmpty {
+      
+      return filteredTeachers.count
+      
+    } else {
+      return infoLessors.count
+    }
+    
   }
   
   
@@ -311,14 +187,73 @@ extension TeacherViewController: UITableViewDataSource {
     
     let infoUserAD = infoLessors[indexPath.row]
     
-    print("\n\n ******* infoUserAD.fullName: \(infoUserAD.fullName)")
-    print("******* infoUserAD.email: \(infoUserAD.email)")
     
-    cell?.nameTeacher.text = "\(infoUserAD.fullName)"
-    cell?.emailLabel.text = "\(infoUserAD.email)"
+    if searchBar1.isActive && !searchBar1.searchBar.text!.isEmpty {
+      
+      
+      print("\n\n ******* infoUserAD.fullName: \(infoUserAD.fullName)")
+      print("******* infoUserAD.email: \(infoUserAD.email)")
+      
+      cell?.nameTeacher.text = "\(filteredTeachers[indexPath.row].fullName)"
+
+      cell?.emailLabel.text = "\(filteredTeachers[indexPath.row].email)"
+   
+      
+      print(" \n\n ____ cell \(indexPath.row): \(String(describing: cell))")
+      return cell!
+      
+    } else {
+      
+      
+      print("\n\n ******* infoUserAD.fullName: \(infoUserAD.fullName)")
+      print("******* infoUserAD.email: \(infoUserAD.email)")
+      
+      cell?.nameTeacher.text = "\(infoUserAD.fullName)"
+      cell?.emailLabel.text = "\(infoUserAD.email)"
+      
+      print(" \n\n ____ cell \(indexPath.row): \(String(describing: cell))")
+      return cell!
+    }
     
-    print(" \n\n ____ cell \(indexPath.row): \(String(describing: cell))")
-    return cell!
+  }
+}
+
+extension TeacherViewController: UISearchBarDelegate,
+                                 UISearchResultsUpdating,
+                                 UISearchControllerDelegate {
+  
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    
+    if !searchController.isActive {
+      return
+    }
+    
+    let searchBar = searchBar1.searchBar
+    
+    if let userEnteredSearchText = searchBar.text {
+      
+      findResultsBasedOnSearch(with: userEnteredSearchText)
+      print("****** user text : \(userEnteredSearchText)")
+      
+    }
+    
+  }
+  
+  private func findResultsBasedOnSearch(with text: String)  {
+    
+    filteredTeachers.removeAll(keepingCapacity: false)
+    
+    if !text.isEmpty {
+      filteredTeachers = infoLessors.filter { item in
+        item.fullName.lowercased().contains(text.lowercased())
+      }
+      tableView.reloadData()
+      
+    } else {
+      
+      tableView.reloadData()
+    }
   }
   
 }

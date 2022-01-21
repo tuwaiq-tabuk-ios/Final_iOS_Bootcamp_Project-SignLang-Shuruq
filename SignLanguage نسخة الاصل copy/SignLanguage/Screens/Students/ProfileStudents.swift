@@ -18,8 +18,8 @@ class ProfileStudents: UIViewController {
   @IBOutlet weak var signOut: UIButton!
   @IBOutlet weak var Delete: UIButton!
   
-  var students:Students?
-  
+  // MARK: - ProPerties
+
   let db = Firestore.firestore()
 
   //  MARK: - View controller Life Cycle
@@ -34,21 +34,26 @@ class ProfileStudents: UIViewController {
   // MARK: - IBAction
 
   
-  @IBAction func editeProfile(_ sender: Any) {
+  @IBAction func editeProfile(_ sender: UIButton) {
+    
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    
     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EditeProfile") as! EditeProfile
+    
     self.present(nextViewController, animated:true, completion:nil)
   }
   
-  @IBAction func editePassword(_ sender: Any) {
+  @IBAction func editePassword(_ sender: UIButton) {
     
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    
     let nextViewController2 = storyBoard.instantiateViewController(withIdentifier: "EditePassword") as! EditePassword
     
     self.present(nextViewController2, animated:true, completion:nil)    
   }
   
-  @IBAction func DeleteButt(_ sender: Any) {
+  
+  @IBAction func DeleteButt(_ sender: UIButton) {
     
     let user = Auth.auth().currentUser
       
@@ -65,7 +70,8 @@ class ProfileStudents: UIViewController {
   }
   }
   
-  @IBAction func signOut(_ sender: Any) {
+  
+  @IBAction func signOut(_ sender: UIButton) {
     
     
     do {

@@ -16,8 +16,8 @@ class SignUpStudentViewController: UIViewController {
 
   @IBOutlet weak var fullNameTextField: UITextField!
   @IBOutlet weak var emailTextField: UITextField!
-  @IBOutlet weak var passwordTextField: MainTF!
-  @IBOutlet weak var confirmPassword: MainTF!
+  @IBOutlet weak var passwordTextField: CMTextField!
+  @IBOutlet weak var confirmPassword: CMTextField!
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   

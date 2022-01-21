@@ -9,6 +9,8 @@ import UIKit
 
 class ViewC: UIViewController {
 
+  // MARK: - ProPerties
+
   let PhrasesAndGreetings = ["أحبك", "‎⁨أراك لاحقا⁩" , "أنا اراقبك" , "‎⁨اتمنى لك حياة سعيدة" , "اقتباس", "انت⁩","سوال", "عمل جيد⁩","لا⁩","‎⁨لست متاكد⁩","موافق","‎⁨هذا رهيب⁩","هذا ممتاز⁩" ]
   
   // MARK: - IBOutlet

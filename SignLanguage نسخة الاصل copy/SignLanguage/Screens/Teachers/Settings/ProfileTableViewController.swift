@@ -19,7 +19,7 @@ class ProfileTableViewController: UIViewController {
   @IBOutlet weak var Delete: UIButton!
   @IBOutlet weak var signOut: UIButton!
   
-  var Teacher: Teacher?
+  // MARK: - ProPerties
   
   let db = Firestore.firestore()
 
@@ -36,10 +36,10 @@ class ProfileTableViewController: UIViewController {
   // MARK: - IBAction
   @IBAction func editeProfile(_ sender: Any) {
     
-//    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileVC
-//    self.present(nextViewController, animated:true, completion:nil)
-//  }
+    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileVC
+    self.present(nextViewController, animated:true, completion:nil)
+  
   }
   
   @IBAction func editePassword(_ sender: Any) {

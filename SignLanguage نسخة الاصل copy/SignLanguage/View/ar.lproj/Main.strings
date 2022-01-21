@@ -72,7 +72,7 @@
 "8ah-9g-99Z.placeholder" = "الايميل";
 
 /* Class = "UITextField"; text = "Razan12@hotmail.com"; ObjectID = "8nh-Pc-KIl"; */
-"8nh-Pc-KIl.text" = "Razan12@hotmail.com";
+"8nh-Pc-KIl.text" = "yasser12@gmail.com";
 
 /* Class = "UITextField"; text = "email"; ObjectID = "96R-4x-7Oy"; */
 "96R-4x-7Oy.text" = "الايميل";
@@ -120,7 +120,7 @@
 "IzN-kL-E1r.text" = "خبره";
 
 /* Class = "UILabel"; text = "Create a new account"; ObjectID = "L6N-GU-jqG"; */
-"L6N-GU-jqG.text" = "انشاء حساب جديد";
+"L6N-GU-jqG.text" = "إنشاء حساب جديد";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "LHf-M3-vHc"; */
 "LHf-M3-vHc.title" = "الرئيسية";
@@ -372,7 +372,7 @@
 "tu0-3b-SDW.placeholder" = " الاسم كامل ";
 
 /* Class = "UILabel"; text = "Create a new account"; ObjectID = "uBX-bV-640"; */
-"uBX-bV-640.text" = "انشاء حساب جديد";
+"uBX-bV-640.text" = "إنشاء حساب جديد";
 
 /* Class = "UITextField"; placeholder = " Email"; ObjectID = "uOV-NW-hrl"; */
 "uOV-NW-hrl.placeholder" = " الايميل";

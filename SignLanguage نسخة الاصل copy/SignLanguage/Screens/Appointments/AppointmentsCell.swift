@@ -14,7 +14,7 @@ class AppointmentsCell: UITableViewCell {
   @IBOutlet weak var emailLabel: UILabel!
   @IBOutlet weak var dateAndTime: UILabel!
   
-  override func awakeFromNib() {
+  override func awakeFromNib() {         
         super.awakeFromNib()
         // Initialization code
     }

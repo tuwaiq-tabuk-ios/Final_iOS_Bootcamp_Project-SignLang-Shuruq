@@ -15,6 +15,8 @@ class FSStudentManager {
   
   private init() {}
   
+  // MARK: - ProPerties
+
   private var email: String = ""
   private var pasword: String = ""
   private var fullName: String = ""

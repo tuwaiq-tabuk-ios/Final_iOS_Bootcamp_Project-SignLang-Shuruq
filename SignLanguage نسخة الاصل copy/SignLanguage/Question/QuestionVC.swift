@@ -8,6 +8,9 @@
 import UIKit
 
 class QuestionVC: UIViewController {
+  
+
+  // MARK: - ProPerties
 
   var quizManager = QuizManager()
   var timer:Timer = Timer()
