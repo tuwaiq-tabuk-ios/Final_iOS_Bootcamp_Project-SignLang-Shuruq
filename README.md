@@ -25,3 +25,11 @@ Family of people with deaf disability and anyone interested in learning the sign
    - Diversity of the way lessons are presented through photos and videos
    - Add motivational notices on some screens
    - It contains a private file for the user
+
+https://user-images.githubusercontent.com/91871792/150527802-fb2f9985-5d1e-451d-a6e8-a8c99accb126.mp4
+
+
+
+
+https://user-images.githubusercontent.com/91871792/150527830-53b80213-63e4-488d-9871-76f65a877912.mp4
+
