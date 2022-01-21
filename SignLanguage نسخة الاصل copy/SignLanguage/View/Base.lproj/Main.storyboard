@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e3L-le-gCw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -3182,22 +3181,22 @@
     </scenes>
     <designables>
         <designable name="4uQ-g5-Abg">
-            <size key="intrinsicContentSize" width="91.5" height="34"/>
+            <size key="intrinsicContentSize" width="90.5" height="34"/>
         </designable>
         <designable name="HIU-3R-0uA">
-            <size key="intrinsicContentSize" width="95" height="34"/>
-        </designable>
-        <designable name="QRK-9C-R4F">
-            <size key="intrinsicContentSize" width="146.5" height="34"/>
-        </designable>
-        <designable name="ddH-V6-4kK">
-            <size key="intrinsicContentSize" width="146.5" height="34"/>
-        </designable>
-        <designable name="hl3-fY-864">
             <size key="intrinsicContentSize" width="94" height="34"/>
         </designable>
+        <designable name="QRK-9C-R4F">
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
+        </designable>
+        <designable name="ddH-V6-4kK">
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
+        </designable>
+        <designable name="hl3-fY-864">
+            <size key="intrinsicContentSize" width="93" height="34"/>
+        </designable>
         <designable name="nqX-Ea-rIn">
-            <size key="intrinsicContentSize" width="108" height="34"/>
+            <size key="intrinsicContentSize" width="107" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

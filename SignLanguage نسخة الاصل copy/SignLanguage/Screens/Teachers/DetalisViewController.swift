@@ -68,7 +68,20 @@ class DetalisViewController: UIViewController {
                                                      "studentId": user!.uid,
                                                      "TeacherId": uid,
                                                      "datePicker" : strDate])
+      showAppointmentOverAlertMessage()
   }
-  
+ 
+    
+    func showAppointmentOverAlertMessage() {
+      
+      let ac = UIAlertController(title: "Thank you",
+                                 message: "Teacher booked ",
+                                 preferredStyle: .alert
+      )
+      
+      ac.addAction(UIAlertAction(title: "Done",
+                                 style: .default,handler: nil))
+      present(ac, animated: true)
+    }
 }
 
