@@ -64,7 +64,9 @@ class EditeProfile: UIViewController {
     
     Auth.auth().currentUser?.updateEmail(to: emailTF.text!) { [self] error in
       if error == nil{
-        let washingtonRef = db.collection("student").document(Auth.auth().currentUser!.uid)
+        let washingtonRef = getFSCollectionReference(.student)
+              .document(Auth.auth().currentUser!.uid)
+          
         washingtonRef.updateData([
           "email": emailTF.text!
         ]) { err in
@@ -78,7 +80,7 @@ class EditeProfile: UIViewController {
       }
     }
     
-    db.collection("student").document(Auth.auth().currentUser!.uid).updateData(["fullnmae" :fullName])  {  err in
+      getFSCollectionReference(.student).document(Auth.auth().currentUser!.uid).updateData(["fullnmae" :fullName])  {  err in
       
       if let  err1 = err {
         print("Error updating document: \(err1)")

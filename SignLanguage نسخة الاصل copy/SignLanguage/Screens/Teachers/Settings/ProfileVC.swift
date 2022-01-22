@@ -13,7 +13,6 @@ import FirebaseStorage
 
 class ProfileVC: UIViewController {
   
-  
   // MARK: - IBOutlet
   
   @IBOutlet weak var avatarImageView: UIImageView!
@@ -50,42 +49,44 @@ class ProfileVC: UIViewController {
     avatarImageView.tintColor = .systemGray5
     
     loadImage()
-  
+    
     let user = Auth.auth().currentUser
     print("\n\n\n****** THE CURRENT USER ID:: \(String(describing: user?.uid))")
     
     if let currentUser = user {
       
-      db.collection("Teacher").document(currentUser.uid).getDocument { doc, err in
-        if err != nil {
-          print("\n\n\n**** AN ERROR OCUURED:: \(String(describing: err))")
-        } else {
-          let data = doc!.data()!
-          print("\n\n\n****** THE DATA::\(data)")
+      getFSCollectionReference(.Teacher)
+        .document(currentUser.uid).getDocument { doc, err in
           
-          print("****************** user uid : \(String(describing: user?.uid))")
-          
-          
-          self.email = (user?.email)!
-          self.EmailTF.text = self.email
-          
-          self.fullName = data["fullName"] as! String
-          self.fullnameTF.text = self.fullName
-          
-          print("DEBUG: ************* Full Name : \(self.fullName)")
-          
-          
-          self.phonenumber = data["phoneNumber"] as! String
-          self.phoneNumberTF.text = self.phonenumber
-          print("DEBUG: ************* phonenumber : \(self.phonenumber)")
-          
-          
-          self.username = data["userName"] as! String
-          self.userNameTF.text = self.username
-          print("DEBUG: ************* username : \(self.username)")
-          
+          if err != nil {
+            print("\n\n\n**** AN ERROR OCUURED:: \(String(describing: err))")
+          } else {
+            let data = doc!.data()!
+            print("\n\n\n****** THE DATA::\(data)")
+            
+            print("****************** user uid : \(String(describing: user?.uid))")
+            
+            
+            self.email = (user?.email)!
+            self.EmailTF.text = self.email
+            
+            self.fullName = data["fullName"] as! String
+            self.fullnameTF.text = self.fullName
+            
+            print("DEBUG: ************* Full Name : \(self.fullName)")
+            
+            
+            self.phonenumber = data["phoneNumber"] as! String
+            self.phoneNumberTF.text = self.phonenumber
+            print("DEBUG: ************* phonenumber : \(self.phonenumber)")
+            
+            
+            self.username = data["userName"] as! String
+            self.userNameTF.text = self.username
+            print("DEBUG: ************* username : \(self.username)")
+            
+          }
         }
-      }
     }
   }
   
@@ -98,7 +99,9 @@ class ProfileVC: UIViewController {
     
     Auth.auth().currentUser?.updateEmail(to: EmailTF.text!) { [self] error in
       if error == nil{
-        let washingtonRef = db.collection("Teacher").document(Auth.auth().currentUser!.uid)
+        let washingtonRef = getFSCollectionReference(.Teacher)
+          .document(Auth.auth().currentUser!.uid)
+        
         washingtonRef.updateData([
           "email": EmailTF.text!
         ]) { err in
@@ -117,9 +120,11 @@ class ProfileVC: UIViewController {
     self.username = self.userNameTF.text!
     self.avatar = self.avatarImageView.image!
     
-    db.collection("Teacher").document(Auth.auth().currentUser!.uid).updateData(["fullName" :self.fullName,
-                                                                                "phoneNumber":self.phonenumber,
-                                                                                "userName":self.username]) {  err in
+    getFSCollectionReference(.Teacher)
+      .document(Auth.auth().currentUser!.uid)
+      .updateData(["fullName" :self.fullName,
+                   "phoneNumber":self.phonenumber,
+                   "userName":self.username]) {  err in
       
       if let err = err {
         print(err)
