@@ -59,6 +59,13 @@ class SignUpTeacherViewController: UIViewController {
             errorLabel.text = "Enter the password"
             return
           }
+      
+      guard let confirmPassword = confirmPassword.text,
+            confirmPassword.isEmpty == false else {
+                errorLabel.isHidden = false
+                errorLabel.text = "Enter the confirm Password"
+                return
+            }
     
     guard let fullName = fullNameTextField.text,
           fullName.isEmpty == false else {
@@ -82,11 +89,12 @@ class SignUpTeacherViewController: UIViewController {
             return
           }
     
-    FSTeacherManager.shared.signUpUserWith(email: email,
-                                        password: password,
-                                        fullName: fullName,
-                                        phoneNumber: phoneNumber,
-                                        userName: userName) { error in
+      FSTeacherManager.shared.signUpUserWith(email: email,
+                                             password: password,
+                                             confirmPassword: confirmPassword,
+                                             fullName: fullName, phoneNumber: phoneNumber,
+                                             userName: userName) { error in
+         
       if error == nil {
         // Navigation
         let storybord = UIStoryboard(name: "Main", bundle: nil)
@@ -101,6 +109,8 @@ class SignUpTeacherViewController: UIViewController {
       }
     }
   }
+    
+    //MARK: - Methods
 
   func setUpElements() {
     

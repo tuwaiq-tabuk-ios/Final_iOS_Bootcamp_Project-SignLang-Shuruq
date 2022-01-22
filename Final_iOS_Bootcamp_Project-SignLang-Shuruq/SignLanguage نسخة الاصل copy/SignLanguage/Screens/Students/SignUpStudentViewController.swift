@@ -57,6 +57,13 @@ class SignUpStudentViewController: UIViewController {
       return
     }
     
+      guard let confirmPassword = confirmPassword.text,
+            confirmPassword.isEmpty == false else {
+                errorLabel.isHidden = false
+                errorLabel.text = "Enter the confirm Password"
+                return
+            }
+      
     guard let fullName = fullNameTextField.text,
           fullName.isEmpty == false else {
             errorLabel.isHidden = false
@@ -66,6 +73,7 @@ class SignUpStudentViewController: UIViewController {
 
     FSStudentManager.shared.signUpUserWith(email: email,
                                            password: password,
+                                           confirmPassword: confirmPassword,
                                            fullName: fullName) { error in
       if error == nil {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
