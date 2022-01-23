@@ -50,7 +50,8 @@ class Appointments: UIViewController ,
                 
         tableView.delegate = self
         tableView.dataSource = self
-        
+      
+      
         getFSCollectionReference(.Appointments).whereField("TeacherId",isEqualTo: user?.uid as Any)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -58,27 +59,71 @@ class Appointments: UIViewController ,
                 } else {
                     for document in querySnapshot!.documents {
                         let data = document.data()
-                        
+
                         let fullName = data["fullName"] as? String ?? ""
                         let email = data["email"] as? String ?? ""
                         let date = data["datePicker"] as? String ?? ""
-                        
+
                         print("****date: \(date)\n")
                         let newUser = Appointment(fullName: fullName, email: email, date: date)
-                        
+
                         self.appointment.append(newUser)
                         print("****infoStudent: \(self.appointment)\n")
                         print("\n \n \(document.documentID) => \(document.data())\n \n ")
-                        
+
                     }
                     self.tableView.reloadData()
                 }
             }
+      
+     
     }
     
    
     // MARK: - Methods
-       
+  func appointments() {
+  
+    getFSCollectionReference(.Appointments).whereField("TeacherId",isEqualTo: user?.uid as Any)
+        .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    
+                    let fullName = data["fullName"] as? String ?? ""
+                    let email = data["email"] as? String ?? ""
+                    let date = data["datePicker"] as? String ?? ""
+                    
+                    print("****date: \(date)\n")
+                    let newUser = Appointment(fullName: fullName, email: email, date: date)
+                    
+                    self.appointment.append(newUser)
+                    print("****infoStudent: \(self.appointment)\n")
+                    print("\n \n \(document.documentID) => \(document.data())\n \n ")
+                    
+                }
+                self.tableView.reloadData()
+            }
+        }
+}
+  
+  func deleteReservation() {
+    
+    let uid = Auth.auth().currentUser!.uid
+    db.collection("Reservations")
+      
+    getFSCollectionReference(.Appointments).whereField("TeacherId", isEqualTo: uid).getDocuments() { (querySnapshot, err) in
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        for document in querySnapshot!.documents {
+          document.reference.delete()
+        }
+        
+      }
+    }
+  }
      
     
     func tableView(_ tableView: UITableView,
@@ -131,15 +176,15 @@ extension Appointments : UITableViewDataSource {
                                 image: UIImage(systemName: "trash"),
                                 attributes: [.destructive]) { _ in
             // Perform action
-              
+            self.deleteReservation()
             
           }
+         
           return UIContextMenuConfiguration(identifier: nil,
                                             previewProvider: nil) { _ in
             UIMenu(children: [delete])
           }
         }
-    
 }
 
 

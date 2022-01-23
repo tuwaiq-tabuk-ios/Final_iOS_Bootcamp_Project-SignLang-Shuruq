@@ -64,7 +64,9 @@ class DetalisViewController: UIViewController {
     
     let strDate = formatter.string(from: dateAndTime.date)
     
-    db.collection("Appointments").addDocument(data: ["email": user?.email as Any,
+    db.collection("Appointments")
+      
+    getFSCollectionReference(.Appointments).addDocument(data: ["email": user?.email as Any,
                                                      "studentId": user!.uid,
                                                      "TeacherId": uid,
                                                      "datePicker" : strDate])

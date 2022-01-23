@@ -26,7 +26,7 @@ class AddStudents: UIViewController {
   
   @IBOutlet weak var nameTF: UITextField!
   @IBOutlet weak var emailTF: UITextField!
-  
+  @IBOutlet weak var dateAndTime: UIDatePicker!
   
   //  MARK: - View controller Life Cycle
 
@@ -50,15 +50,18 @@ class AddStudents: UIViewController {
     let fullName = nameTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     let email = emailTF.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd-M-YYYY"
     
-    db.collection("Appointments").addDocument(data: ["fullName":fullName,
-                                                     "email": email,
-                                                     "studentId": user!.uid,
-                                                     "TeacherId": uid])
+    let strDate = formatter.string(from: dateAndTime.date)
+        
     
-    
-  }
+    getFSCollectionReference(.Appointments).addDocument(data: [ "fullName": fullName,
+                                                                "email": email as Any,
+                                                                "studentId": user!.uid,
+                                                                "TeacherId": uid,
+                                                                "datePicker" : strDate])
 }
 
-
+}
 
