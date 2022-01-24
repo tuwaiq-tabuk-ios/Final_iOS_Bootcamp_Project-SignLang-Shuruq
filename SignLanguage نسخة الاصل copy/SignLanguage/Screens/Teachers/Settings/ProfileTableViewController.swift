@@ -52,6 +52,7 @@ class ProfileTableViewController: UIViewController {
   
   }
   
+  
   @IBAction func DeleteButt(_ sender: Any) {
     
     let user = Auth.auth().currentUser
@@ -65,9 +66,7 @@ class ProfileTableViewController: UIViewController {
           
           print("Account Deleted")
       }
-  
   }
-    
   }
   
   @IBAction func signOut(_ sender: Any) {
@@ -75,14 +74,16 @@ class ProfileTableViewController: UIViewController {
     do {
       try Auth.auth().signOut()
       
-      if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeVC") as? UINavigationController {
+      if let vc = UIStoryboard(name: "Main", bundle: nil)
+          .instantiateViewController(withIdentifier: "WelcomeVC")
+          as? UINavigationController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
       }
     } catch {
       print("ERROR")
     }
-  
+
 }
 
 }

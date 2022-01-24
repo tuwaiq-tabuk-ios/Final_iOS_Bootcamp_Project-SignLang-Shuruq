@@ -38,7 +38,8 @@ class EditeProfile: UIViewController {
     print("\n\n\n****** THE CURRENT USER ID:: \(String(describing: user?.uid))")
     
     if let currentUser = user {
-      db.collection("student").document(currentUser.uid).getDocument { doc, err in
+      
+      getFSCollectionReference(.student).document(currentUser.uid).getDocument { doc, err in
         if err != nil {
           print("\n\n\n**** AN ERROR OCUURED:: \(String(describing: err))")
         } else {
@@ -48,7 +49,7 @@ class EditeProfile: UIViewController {
           self.email = (user?.email)!
           self.emailTF.text = self.email
           
-          self.fullName = data?["fullname"] as! String
+          self.fullName = (data?["fullName"] as? String)!
           self.fullNameTF.text = self.fullName
           
         }
