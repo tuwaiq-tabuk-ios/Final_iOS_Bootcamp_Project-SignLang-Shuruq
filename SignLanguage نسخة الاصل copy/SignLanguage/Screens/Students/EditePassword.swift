@@ -56,7 +56,8 @@ class EditePassword: UIViewController {
     Auth.auth().currentUser?.updatePassword(to: editePasswordTF.text!) { [self] error in
       
       if error == nil {
-        let ref = db.collection("student").document(Auth.auth().currentUser!.uid)
+          let ref = getFSCollectionReference(.student)
+              .document(Auth.auth().currentUser!.uid)
         
         ref.updateData(["password": editePasswordTF.text!]) { err in
           if let err = err {

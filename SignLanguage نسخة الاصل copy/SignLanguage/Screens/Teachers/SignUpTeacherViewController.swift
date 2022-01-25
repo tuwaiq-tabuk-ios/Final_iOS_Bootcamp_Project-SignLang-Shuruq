@@ -19,16 +19,17 @@ class SignUpTeacherViewController: UIViewController {
   @IBOutlet weak var phoneNumberTextField: UITextField!
   @IBOutlet weak var userNameTextField: UITextField!
   @IBOutlet weak var passwordTextField: CMTextField!
-  @IBOutlet weak var confirmPassword: CMTextField!
+  @IBOutlet weak var confirmPasswordTextField: CMTextField!
   @IBOutlet weak var signUpButton: UIButton!
   @IBOutlet weak var errorLabel: UILabel!
   
+  
+  
   //  MARK: - View controller Life Cycle
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-  //  errorLabel.isHidden = true
     setUpElements()
     overrideUserInterfaceStyle = .light
     
@@ -36,13 +37,13 @@ class SignUpTeacherViewController: UIViewController {
   
   
   // MARK: - IBAction
-
+  
   @IBAction func signUpTapped(_ sender: Any) {
     
     signUp()
-
+    
   }
-   // MARK: - Methods
+  // MARK: - Methods
   
   private func signUp() {
     
@@ -59,13 +60,13 @@ class SignUpTeacherViewController: UIViewController {
             errorLabel.text = "Enter the password"
             return
           }
-      
-      guard let confirmPassword = confirmPassword.text,
-            confirmPassword.isEmpty == false else {
-                errorLabel.isHidden = false
-                errorLabel.text = "Enter the confirm Password"
-                return
-            }
+    
+    guard let confirmPassword = confirmPasswordTextField.text,
+          confirmPassword.isEmpty == false else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Enter the confirm Password"
+            return
+          }
     
     guard let fullName = fullNameTextField.text,
           fullName.isEmpty == false else {
@@ -80,7 +81,7 @@ class SignUpTeacherViewController: UIViewController {
             errorLabel.text = "Enter the phone Number"
             return
           }
-          
+    
     guard let userName = userNameTextField.text,
           userName.isEmpty == false else {
             errorLabel.isHidden = false
@@ -89,31 +90,36 @@ class SignUpTeacherViewController: UIViewController {
             return
           }
     
+    if password == confirmPassword {
+      
       FSTeacherManager.shared.signUpUserWith(email: email,
                                              password: password,
                                              confirmPassword: confirmPassword,
                                              fullName: fullName, phoneNumber: phoneNumber,
                                              userName: userName) { error in
-         
-      if error == nil {
-        // Navigation
-        let storybord = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storybord.instantiateViewController(withIdentifier: K.Storyboard.teacherVCIdentifier)
         
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
-        
-      } else {
-        self.errorLabel.isHidden = false
-        self.errorLabel.text = error?.localizedDescription
+        if error == nil {
+          // Navigation
+          let storybord = UIStoryboard(name: "Main", bundle: nil)
+          let vc = storybord.instantiateViewController(withIdentifier: K.Storyboard.teacherVCIdentifier)
+          
+          vc.modalPresentationStyle = .overFullScreen
+          self.present(vc, animated: true)
+          
+        } else {
+          self.errorLabel.isHidden = false
+          self.errorLabel.text = error?.localizedDescription
+        }
       }
+    } else {
+      self.errorLabel.isHidden = false
+      self.errorLabel.text = "Passwords don't match"
     }
   }
-    
-    //MARK: - Methods
-
+  
+  //MARK: - Methods
+  
   func setUpElements() {
-    
     
     // Style the elements
     Utilities.styleTextField(fullNameTextField)
@@ -121,7 +127,7 @@ class SignUpTeacherViewController: UIViewController {
     Utilities.styleTextField(phoneNumberTextField)
     Utilities.styleTextField(userNameTextField)
     Utilities.styleTextField(passwordTextField)
-    Utilities.styleTextField(confirmPassword)
+    Utilities.styleTextField(confirmPasswordTextField)
     Utilities.styleFilledButton(signUpButton)
   }
 }

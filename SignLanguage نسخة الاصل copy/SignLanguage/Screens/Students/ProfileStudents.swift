@@ -1,58 +1,60 @@
 //
-//  ProfileTableViewController.swift
+//  Settings.swift
 //  SignLanguage
 //
-//  Created by Shorouq AlAnzi on 21/05/1443 AH.
+//  Created by Shorouq AlAnzi on 03/05/1443 AH.
 //
 
 import UIKit
 import Firebase
-import FirebaseAuth
+import FirebaseFirestore
 
-
-class ProfileTableViewController: UIViewController {
+class ProfileStudents: UIViewController {
   
-  // MARK: - IBOutlet
+ // MARK: - IBOutlet
   
   @IBOutlet weak var editeProfile: UIButton!
   @IBOutlet weak var editePassword: UIButton!
-  @IBOutlet weak var Delete: UIButton!
   @IBOutlet weak var signOut: UIButton!
+  @IBOutlet weak var Delete: UIButton!
   
   // MARK: - ProPerties
-  
+
   let db = Firestore.firestore()
 
-  
   //  MARK: - View controller Life Cycle
 
   override func viewDidLoad() {
-        super.viewDidLoad()
-
+     super.viewDidLoad()
+    
     overrideUserInterfaceStyle = .light
 
-    }
-
+  }
+  
   // MARK: - IBAction
-  @IBAction func editeProfile(_ sender: Any) {
+
+  
+  @IBAction func editeProfile(_ sender: UIButton) {
     
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Profile") as! ProfileVC
+    
+    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EditeProfile") as! EditeProfile
+    
     self.present(nextViewController, animated:true, completion:nil)
-  
   }
   
-  @IBAction func editePassword(_ sender: Any) {
     
+  @IBAction func editePassword(_ sender: UIButton) {
     
     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-    let nextViewController3 = storyBoard.instantiateViewController(withIdentifier: "Password") as! Password
-    self.present(nextViewController3, animated:true, completion:nil)
-  
-  
+    
+    let nextViewController2 = storyBoard.instantiateViewController(withIdentifier: "EditePassword") as! EditePassword
+    
+    self.present(nextViewController2, animated:true, completion:nil)    
   }
   
-  @IBAction func DeleteButt(_ sender: Any) {
+  
+  @IBAction func DeleteButt(_ sender: UIButton) {
     
     let user = Auth.auth().currentUser
       
@@ -67,10 +69,11 @@ class ProfileTableViewController: UIViewController {
       }
   
   }
-    
   }
   
-  @IBAction func signOut(_ sender: Any) {
+  
+  @IBAction func signOut(_ sender: UIButton) {
+    
     
     do {
       try Auth.auth().signOut()
@@ -84,5 +87,8 @@ class ProfileTableViewController: UIViewController {
     }
   
 }
+  }
 
-}
+
+
+

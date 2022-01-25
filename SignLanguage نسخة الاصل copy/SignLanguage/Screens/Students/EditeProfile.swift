@@ -38,7 +38,8 @@ class EditeProfile: UIViewController {
     print("\n\n\n****** THE CURRENT USER ID:: \(String(describing: user?.uid))")
     
     if let currentUser = user {
-      db.collection("student").document(currentUser.uid).getDocument { doc, err in
+      
+      getFSCollectionReference(.student).document(currentUser.uid).getDocument { doc, err in
         if err != nil {
           print("\n\n\n**** AN ERROR OCUURED:: \(String(describing: err))")
         } else {
@@ -48,7 +49,7 @@ class EditeProfile: UIViewController {
           self.email = (user?.email)!
           self.emailTF.text = self.email
           
-          self.fullName = data?["fullname"] as! String
+          self.fullName = (data?["fullName"] as? String)!
           self.fullNameTF.text = self.fullName
           
         }
@@ -64,7 +65,9 @@ class EditeProfile: UIViewController {
     
     Auth.auth().currentUser?.updateEmail(to: emailTF.text!) { [self] error in
       if error == nil{
-        let washingtonRef = db.collection("student").document(Auth.auth().currentUser!.uid)
+        let washingtonRef = getFSCollectionReference(.student)
+              .document(Auth.auth().currentUser!.uid)
+          
         washingtonRef.updateData([
           "email": emailTF.text!
         ]) { err in
@@ -78,7 +81,7 @@ class EditeProfile: UIViewController {
       }
     }
     
-    db.collection("student").document(Auth.auth().currentUser!.uid).updateData(["fullnmae" :fullName])  {  err in
+      getFSCollectionReference(.student).document(Auth.auth().currentUser!.uid).updateData(["fullnmae" :fullName])  {  err in
       
       if let  err1 = err {
         print("Error updating document: \(err1)")

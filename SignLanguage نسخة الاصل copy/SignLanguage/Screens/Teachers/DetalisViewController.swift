@@ -20,7 +20,7 @@ class DetalisViewController: UIViewController {
   @IBOutlet weak var reservationButt: UIButton!
   
   // MARK: - ProPerties
-
+  
   let db = Firestore.firestore()
   var fullName: String = ""
   var email: String = ""
@@ -64,24 +64,25 @@ class DetalisViewController: UIViewController {
     
     let strDate = formatter.string(from: dateAndTime.date)
     
-    db.collection("Appointments").addDocument(data: ["email": user?.email as Any,
-                                                     "studentId": user!.uid,
-                                                     "TeacherId": uid,
-                                                     "datePicker" : strDate])
-      showAppointmentOverAlertMessage()
-  }
- 
     
-    func showAppointmentOverAlertMessage() {
-      
-      let ac = UIAlertController(title: "Thank you",
-                                 message: "Teacher booked ",
-                                 preferredStyle: .alert
-      )
-      
-      ac.addAction(UIAlertAction(title: "Done",
-                                 style: .default,handler: nil))
-      present(ac, animated: true)
-    }
+    getFSCollectionReference(.Appointments).addDocument(data: ["email": user?.email as Any,
+                                                               "studentId": user!.uid,
+                                                               "TeacherId": uid,
+                                                               "datePicker" : strDate])
+    showAppointmentOverAlertMessage()
+  }
+  
+  
+  func showAppointmentOverAlertMessage() {
+    
+    let ac = UIAlertController(title: "Thank you",
+                               message: "Teacher booked ",
+                               preferredStyle: .alert
+    )
+    
+    ac.addAction(UIAlertAction(title: "Done",
+                               style: .default,handler: nil))
+    present(ac, animated: true)
+  }
 }
 
