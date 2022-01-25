@@ -17,15 +17,24 @@ This app aims to help learn sign language to deaf people familiars and others in
 Family of people with deaf disability and anyone interested in learning the sign language.
 
 
-## User stories
-   - Sign language lessons suitable for all groups
-   - Adding sign language teachers at any time that suits both parties
-   - Sign language test in a fun way
-   - Allow to search for sign language in the YouTube search engine
-   - Diversity of the way lessons are presented through photos and videos
-   - Add motivational notices on some screens
-   - It contains a private file for the user
-
+## User stories - Teacher
+   - It contains a private file for Teacher
+   - Teacher Authentication
+   - Allows the teacher to add personal information
+   - Allow the teacher to add students to appointments
+   
+   
+## User stories - Students
+ - It contains a private file for Students
+ - Add motivational notices on some screens
+ - Students Authentication
+ - Diversity of the way lessons are presented through photos and videos
+ - Allow to search for sign language in the YouTube search engine
+ - Sign language test in a fun way
+ - Adding sign language teachers at any time that suits both parties
+ 
+ ## User stories - Teacher and Students
+   - Teacher meeting with student via Zoom
 
 
 https://user-images.githubusercontent.com/91871792/150527830-53b80213-63e4-488d-9871-76f65a877912.mp4
