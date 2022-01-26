@@ -35,7 +35,8 @@ Family of people with deaf disability and anyone interested in learning the sign
  
  
  ## User stories - Teacher and Students
-    - Teacher meeting with student via Zoom
+    - Teacher meeting with student via Zoo
+    
 
 ## video
 
@@ -43,6 +44,7 @@ https://user-images.githubusercontent.com/91871792/150527830-53b80213-63e4-488d-
 
 
 https://user-images.githubusercontent.com/91871792/150528037-aa439702-6b92-4907-a7a6-c99df342e93e.mp4
+
 
 
 
