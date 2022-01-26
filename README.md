@@ -31,5 +31,16 @@ Family of people with deaf disability and anyone interested in learning the sign
  - Diversity of the way lessons are presented through photos and videos
  - Allow to search for sign language in the YouTube search engine
  - Sign language test in a fun way
- - Adding sign language teachers at any time that suits both partie
+ - Adding sign language teachers at any time that suits both parties
+ 
+ 
+ ## User stories - Teacher and Students
+    - Teacher meeting with student via Zoo
+    
 
+## video
+
+https://user-images.githubusercontent.com/91871792/150527830-53b80213-63e4-488d-9871-76f65a877912.mp4
+
+
+https://user-images.githubusercontent.com/91871792/150528037-aa439702-6b92-4907-a7a6-c99df342e93e.mp4
