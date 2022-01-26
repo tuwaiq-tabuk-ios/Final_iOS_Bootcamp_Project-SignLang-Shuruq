@@ -35,7 +35,7 @@ Family of people with deaf disability and anyone interested in learning the sign
  
  
  ## User stories - Teacher and Students
-    - Teacher meeting with student via Zoo
+    - Teacher meeting with student via Zoom
     
 
 ## video
